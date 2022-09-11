@@ -9,7 +9,7 @@ public class Procedural_Generation : MonoBehaviour
     [SerializeField] GameObject[] backgrounds;
     [SerializeField] Transform generationPoint, destructionPoint;
     private float enemyTimer = 5f, backgroundTimer;
-    private int randomOption = 1;
+    private int randomOption;
 
     void Update()
     {
@@ -20,7 +20,6 @@ public class Procedural_Generation : MonoBehaviour
         }
 
         SpawnEnvironment();
-        Debug.Log(randomOption);
     }
     void SpawnEnvironment()
     {
@@ -36,7 +35,8 @@ public class Procedural_Generation : MonoBehaviour
 
     void SpawnEnemy()
     {
+        Instantiate(enemy, new Vector2(player.transform.position.x + 25, 2), Quaternion.identity);
         enemyTimer = Random.Range(minWait,maxWait);
-        Instantiate(enemy, new Vector2(player.transform.position.x + 20, 2), Quaternion.identity);
+        Debug.Log(player.transform.position.x);
     }
 }
