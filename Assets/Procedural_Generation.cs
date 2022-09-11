@@ -1,56 +1,42 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Procedural_Generation : MonoBehaviour
 {
     [SerializeField] int width, height;
     [SerializeField] GameObject enemy, player;
     [SerializeField] float minWait, maxWait;
-    [SerializeField] Tilemap backgroundTileMap, platformTileMap;
-    [SerializeField] Tile background, platform;
-    private float timer;
-
-
-    void Awake()
-    {
-        Generation();
-        ResetEnemySpawnTimer();
-    }
+    [SerializeField] GameObject platform;
+    [SerializeField] GameObject[] backgrounds;
+    [SerializeField] Transform generationPoint, destructionPoint;
+    private float enemyTimer = 5f, backgroundTimer;
+    private int randomOption = 1;
 
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        enemyTimer -= Time.deltaTime;
+        if (enemyTimer <= 0)
         {
             SpawnEnemy();
-            ResetEnemySpawnTimer();
         }
-        Debug.Log(timer);
+
+        SpawnEnvironment();
+        Debug.Log(randomOption);
     }
-
-    void Generation()
+    void SpawnEnvironment()
     {
-        for (int x = 0; x < width; x++)
+        if(transform.position.x < generationPoint.position.x)
         {
-            for (int y = 0; y < height; y++)
-            {
-                backgroundTileMap.SetTile(new Vector3Int(x,y + 1,0), background);
-            }
-        }
+            transform.position = new Vector3(transform.position.x + width, transform.position.y, transform.position.z);
+            Instantiate(platform, transform.position, Quaternion.identity);
 
-        for (int x = 0; x < width; x++)
-        {
-            platformTileMap.SetTile(new Vector3Int(x,0,0), platform);
+            randomOption = Random.Range(0, backgrounds.Length);
+            Instantiate(backgrounds[randomOption], new Vector3(transform.position.x, transform.position.y + 8, transform.position.z), Quaternion.identity);
         }
     }
 
     void SpawnEnemy()
     {
+        enemyTimer = Random.Range(minWait,maxWait);
         Instantiate(enemy, new Vector2(player.transform.position.x + 20, 2), Quaternion.identity);
-    }
-
-    void ResetEnemySpawnTimer()
-    {
-        timer = Random.Range(minWait,maxWait);
     }
 }
