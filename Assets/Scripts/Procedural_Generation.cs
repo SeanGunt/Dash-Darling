@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Procedural_Generation : MonoBehaviour
 {
-    [SerializeField] int width, height;
+    [SerializeField] float width, height;
     [SerializeField] GameObject enemy, player;
     [SerializeField] float minWait, maxWait;
     [SerializeField] GameObject platform;
@@ -29,14 +29,13 @@ public class Procedural_Generation : MonoBehaviour
             Instantiate(platform, transform.position, Quaternion.identity);
 
             randomOption = Random.Range(0, backgrounds.Length);
-            Instantiate(backgrounds[randomOption], new Vector3(transform.position.x, transform.position.y + 8, transform.position.z), Quaternion.identity);
+            Instantiate(backgrounds[randomOption], new Vector3(transform.position.x, height, transform.position.z), Quaternion.identity);
         }
     }
 
     void SpawnEnemy()
     {
-        Instantiate(enemy, new Vector2(player.transform.position.x + 25, 2), Quaternion.identity);
+        Instantiate(enemy, new Vector2(player.transform.position.x + 25, 0.95f), Quaternion.identity);
         enemyTimer = Random.Range(minWait,maxWait);
-        Debug.Log(player.transform.position.x);
     }
 }
