@@ -18,11 +18,6 @@ public class ProjectileMove : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         Destroy(this.gameObject);
-
-        if (other.gameObject.tag == "Enemy")
-        {
-            Destroy(other.gameObject);
-        }
     }
 
     void DestroyAfterTime()
