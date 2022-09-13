@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63b83420d9fed04191943945a2344da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PistolDamage: 50
 --- !u!1 &1213917580
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,10 +185,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 19.2
   height: 5.85
+  flyingEnemy: {fileID: 2685992144666178103, guid: 10945a4cafdc5d64a8755be7bd43810d, type: 3}
   enemy: {fileID: 7697083160778248441, guid: 2b1dd1dda3efc7347a66461616d66ef9, type: 3}
   player: {fileID: 1784211258}
   minWait: 1
-  maxWait: 1.25
+  maxWait: 3
   platform: {fileID: 3527900199565269004, guid: d4968c5adbb61ba4d8355cd788a10d00, type: 3}
   backgrounds:
   - {fileID: 6383257162972059209, guid: 882315b21c50f744991ee07f48e7a696, type: 3}
