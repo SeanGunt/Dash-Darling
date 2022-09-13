@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
@@ -33,10 +32,11 @@ public class Zombie : MonoBehaviour
         }
         if (other.gameObject.tag == "Pistol")
         {
-            health = health - GunDamage.Instance.PistolDamage;
-            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(GunDamage.Instance.PistolDamage,0);
+            health = health - PlayerController.pistolDamage;
+            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(PlayerController.pistolDamage,0);
             if (health <= 0)
             {
+                PlayerController.money += 100;
                 Destroy(this.gameObject);
             }
             Debug.Log(health);
