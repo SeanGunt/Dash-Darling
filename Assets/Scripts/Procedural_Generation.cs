@@ -3,20 +3,26 @@ using UnityEngine;
 public class Procedural_Generation : MonoBehaviour
 {
     [SerializeField] float width, height;
-    [SerializeField] GameObject enemy, player;
+    [SerializeField] GameObject flyingEnemy, enemy, player;
     [SerializeField] float minWait, maxWait;
     [SerializeField] GameObject platform;
     [SerializeField] GameObject[] backgrounds;
     [SerializeField] Transform generationPoint, destructionPoint;
-    private float enemyTimer = 5f, backgroundTimer;
+    private float zombieTimer = 5f, backgroundTimer, flyerTimer = 10f;
     private int randomOption;
 
     void Update()
     {
-        enemyTimer -= Time.deltaTime;
-        if (enemyTimer <= 0)
+        zombieTimer -= Time.deltaTime;
+        if (zombieTimer <= 0)
         {
-            SpawnEnemy();
+            SpawnZombie();
+        }
+
+        flyerTimer -= Time.deltaTime;
+        if (flyerTimer <= 0)
+        {
+            SpawnFlyer();
         }
 
         SpawnEnvironment();
@@ -33,9 +39,17 @@ public class Procedural_Generation : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
+    void SpawnZombie()
     {
         Instantiate(enemy, new Vector2(player.transform.position.x + 25, 0.95f), Quaternion.identity);
-        enemyTimer = Random.Range(minWait,maxWait);
+
+        zombieTimer = Random.Range(minWait,maxWait);
+    }
+
+    void SpawnFlyer()
+    {
+        Instantiate(flyingEnemy, new Vector2(player.transform.position.x + 25, 4f), Quaternion.identity);
+
+        flyerTimer = Random.Range(minWait, maxWait);
     }
 }

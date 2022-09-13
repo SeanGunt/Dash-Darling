@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Zombie : MonoBehaviour
+public class Flyer : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] int health;
