@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] int health;
-    [SerializeField] GameObject healthBar;
+    [SerializeField] RectTransform healthBar;
     private Rigidbody2D rb;
 
     void Awake()
@@ -12,7 +13,6 @@ public class Zombie : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
     }
 
-    
     void Update()
     {
         Move();
@@ -32,7 +32,8 @@ public class Zombie : MonoBehaviour
         }
         if (other.gameObject.tag == "Pistol")
         {
-            health = health - 50;
+            health = health - GunDamage.Instance.PistolDamage;
+            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(GunDamage.Instance.PistolDamage,0);
             if (health <= 0)
             {
                 Destroy(this.gameObject);
