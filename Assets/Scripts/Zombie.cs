@@ -39,7 +39,6 @@ public class Zombie : MonoBehaviour
                 PlayerController.money += 100;
                 Destroy(this.gameObject);
             }
-            Debug.Log(health);
         }
     }
 }

@@ -41,7 +41,6 @@ public class Flyer : MonoBehaviour
                  PlayerController.money += 50;
                 Destroy(this.gameObject);
             }
-            Debug.Log(health);
         }
     }
 }
