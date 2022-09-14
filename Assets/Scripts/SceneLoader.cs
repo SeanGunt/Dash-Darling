@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void StartGame()
     {
+        DataPersistenceManager.instance.SaveGame();
         SceneManager.LoadScene(1);
         Debug.Log("GAME STARTED");
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDataPersistence
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] float movementSpeed, lookSpeed;
     [SerializeField] Rigidbody2D rb;
@@ -8,20 +8,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject[] muzzleFlashes;
     private int randomOption;
-    public static int money;
-    public static int pistolDamage;
 
-    public void LoadData(GameData data)
-    {
-        money = data.money;
-        pistolDamage = data.pistolDamage;
-    }
-
-    public void SaveData(GameData data)
-    {
-        data.money = money;
-        data.pistolDamage = pistolDamage;
-    }
     void Update()
     {
         Scroll();

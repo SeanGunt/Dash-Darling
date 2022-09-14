@@ -7,7 +7,6 @@ public class Flyer : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] RectTransform healthBar;
     private Rigidbody2D rb;
-    private GameData gameData;
 
     void Awake()
     {
@@ -34,11 +33,11 @@ public class Flyer : MonoBehaviour
         }
         if (other.gameObject.tag == "Pistol")
         {
-            health = health - PlayerController.pistolDamage;
-            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(PlayerController.pistolDamage,0);
+            health = health - GameDataHolder.pistolDamage;
+            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(GameDataHolder.pistolDamage,0);
             if (health <= 0)
             {
-                 PlayerController.money += 50;
+                 GameDataHolder.money += 50;
                 Destroy(this.gameObject);
             }
         }

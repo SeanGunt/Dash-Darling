@@ -171,8 +171,10 @@ MonoBehaviour:
   flyingEnemy: {fileID: 2685992144666178103, guid: 10945a4cafdc5d64a8755be7bd43810d, type: 3}
   enemy: {fileID: 7697083160778248441, guid: 2b1dd1dda3efc7347a66461616d66ef9, type: 3}
   player: {fileID: 1784211258}
-  minWait: 1
-  maxWait: 3
+  minWaitZombie: 2
+  maxWaitZombie: 5
+  minWaitFlyer: 1.5
+  maxWaitFlyer: 3.5
   platform: {fileID: 3527900199565269004, guid: d4968c5adbb61ba4d8355cd788a10d00, type: 3}
   backgrounds:
   - {fileID: 6383257162972059209, guid: 882315b21c50f744991ee07f48e7a696, type: 3}
@@ -367,6 +369,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 728361448, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475184043666171705, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.662
+      objectReference: {fileID: 0}
     - target: {fileID: 7787642310828426341, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
       propertyPath: m_RootOrder
       value: 2

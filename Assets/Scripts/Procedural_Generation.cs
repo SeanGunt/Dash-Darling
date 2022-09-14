@@ -4,7 +4,7 @@ public class Procedural_Generation : MonoBehaviour
 {
     [SerializeField] float width, height;
     [SerializeField] GameObject flyingEnemy, enemy, player;
-    [SerializeField] float minWait, maxWait;
+    [SerializeField] float minWaitZombie, maxWaitZombie, minWaitFlyer, maxWaitFlyer;
     [SerializeField] GameObject platform;
     [SerializeField] GameObject[] backgrounds;
     [SerializeField] Transform generationPoint, destructionPoint;
@@ -47,13 +47,13 @@ public class Procedural_Generation : MonoBehaviour
     {
         Instantiate(enemy, new Vector2(player.transform.position.x + 25, 0.95f), Quaternion.identity);
 
-        zombieTimer = Random.Range(minWait/difficulty,maxWait/difficulty);
+        zombieTimer = Random.Range(minWaitZombie/difficulty,maxWaitZombie/difficulty);
     }
 
     void SpawnFlyer()
     {
-        Instantiate(flyingEnemy, new Vector2(player.transform.position.x + 25, 4f), Quaternion.identity);
+        Instantiate(flyingEnemy, new Vector2(player.transform.position.x + 25, 6f), Quaternion.identity);
 
-        flyerTimer = Random.Range(minWait/difficulty, maxWait/difficulty);
+        flyerTimer = Random.Range(minWaitFlyer/difficulty, maxWaitFlyer/difficulty);
     }
 }
