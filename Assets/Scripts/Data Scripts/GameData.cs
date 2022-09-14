@@ -1,15 +1,19 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class GameData
 {
     public int pistolDamage;
     public int money;
+    public bool purchasable;
     
     public GameData()
     {
-        this.pistolDamage = 25;
-        this.money = 0;
+        pistolDamage = 25;
+        money = 0;
+        purchasable = true;
     }
 }

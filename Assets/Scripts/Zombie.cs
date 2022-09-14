@@ -32,11 +32,11 @@ public class Zombie : MonoBehaviour
         }
         if (other.gameObject.tag == "Pistol")
         {
-            health = health - PlayerController.pistolDamage;
-            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(PlayerController.pistolDamage,0);
+            health = health - GameDataHolder.pistolDamage;
+            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(GameDataHolder.pistolDamage,0);
             if (health <= 0)
             {
-                PlayerController.money += 100;
+                GameDataHolder.money += 100;
                 Destroy(this.gameObject);
             }
         }
