@@ -28,7 +28,7 @@ public class Procedural_Generation : MonoBehaviour
         {
             SpawnFlyer();
         }
-        difficulty += 0.0083f * Time.deltaTime;
+        difficulty += 0.025f * Time.deltaTime;
         SpawnEnvironment();
     }
     void SpawnEnvironment()

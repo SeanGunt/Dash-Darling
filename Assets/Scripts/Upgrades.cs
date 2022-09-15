@@ -36,7 +36,7 @@ public class Upgrades : MonoBehaviour, IDataPersistence
             purchasable = false;
             button.interactable = false;
             GameDataHolder.money -= 1000;
-            GameDataHolder.pistolDamage += 5;
+            GameDataHolder.pistolDamage += 10;
             Debug.Log("Damage is now equal to " + GameDataHolder.pistolDamage);
         }
 
