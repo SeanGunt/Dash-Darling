@@ -22,9 +22,9 @@ public class AudioManagerTest : MonoBehaviour
 
         if(firstPlayInt == 0)
         {
-            bgmFloat = .75f;
+            bgmFloat = .50f;
             sfxFloat = .50f;
-            masFloat = 1.0f;
+            masFloat = .50f;
             bgmSlider.value = bgmFloat;
             sfxSlider.value = sfxFloat;
             masSlider.value = masFloat;

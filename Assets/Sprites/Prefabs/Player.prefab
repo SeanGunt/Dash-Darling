@@ -475,6 +475,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   lookSpeed: 50
+  timeTillNextAttack: 0
+  attackRate: 4
   rb: {fileID: 5508009096035908954}
   gun: {fileID: 4475184043666171705}
   ejectionPoint: {fileID: 867606288}

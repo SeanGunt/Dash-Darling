@@ -12,6 +12,12 @@ public class SceneLoader : MonoBehaviour
         Debug.Log("GAME STARTED");
     }
 
+    public void LoadMenu()
+    {
+        DataPersistenceManager.instance.SaveGame();
+        SceneManager.LoadScene(0);
+    }
+
     public void ExitGame()
     {
         Application.Quit();

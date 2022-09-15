@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float movementSpeed, lookSpeed;
+    [SerializeField] float movementSpeed, lookSpeed, timeTillNextAttack, attackRate;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
     [SerializeField] GameObject projectile;
@@ -13,8 +13,13 @@ public class PlayerController : MonoBehaviour
     {
         Scroll();
         GunLook();
-        GunShoot();
+        if (Time.time >= timeTillNextAttack)
+        {
+            GunShoot();
+            timeTillNextAttack = Time.time + 1f/attackRate;
+        }
     }
+
 
     void Scroll()
     {
@@ -32,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void GunShoot()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             Instantiate(projectile, ejectionPoint.position, gun.rotation);
 
