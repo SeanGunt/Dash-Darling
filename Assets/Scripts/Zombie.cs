@@ -37,6 +37,7 @@ public class Zombie : MonoBehaviour
             if (health <= 0)
             {
                 GameDataHolder.money += 100;
+                MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
                 Destroy(this.gameObject);
             }
         }

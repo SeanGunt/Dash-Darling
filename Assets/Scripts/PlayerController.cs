@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
         PistolReload();
         if (Time.time >= timeTillNextAttack && currentPistolMagazine > 0)
         {
-            timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
             PistolShoot();
+            timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
         }
     }
 

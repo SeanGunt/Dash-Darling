@@ -37,7 +37,8 @@ public class Flyer : MonoBehaviour
             healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(GameDataHolder.pistolDamage,0);
             if (health <= 0)
             {
-                 GameDataHolder.money += 50;
+                GameDataHolder.money += 50;
+                MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
                 Destroy(this.gameObject);
             }
         }

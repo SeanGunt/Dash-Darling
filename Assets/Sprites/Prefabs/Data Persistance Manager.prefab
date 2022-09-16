@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3695472474693948829}
   - component: {fileID: 3695472474693948828}
   - component: {fileID: 8725992521338843725}
+  - component: {fileID: 997091239775086820}
   m_Layer: 0
   m_Name: Data Persistance Manager
   m_TagString: Untagged
@@ -57,3 +58,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc441e3276146414aabac69a2f795a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &997091239775086820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695472474693948826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efb277d60a969849a82228a26e4d8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyUI: {fileID: 0}
