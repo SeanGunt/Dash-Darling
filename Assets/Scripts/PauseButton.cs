@@ -9,6 +9,7 @@ public class PauseButton : MonoBehaviour
     private void Awake()
     {
         pauseMenu.SetActive(false);
+        Resume();
     }
     public void OnPauseButtonClick()
     {
