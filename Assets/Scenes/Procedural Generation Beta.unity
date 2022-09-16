@@ -761,7 +761,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1731606537}
         m_TargetAssemblyTypeName: AudioManagerTest, Assembly-CSharp
         m_MethodName: UpdateSound
         m_Mode: 1
@@ -3737,7 +3737,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1731606537}
         m_TargetAssemblyTypeName: AudioManagerTest, Assembly-CSharp
         m_MethodName: UpdateSound
         m_Mode: 1
@@ -4123,7 +4123,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1731606537}
         m_TargetAssemblyTypeName: AudioManagerTest, Assembly-CSharp
         m_MethodName: UpdateSound
         m_Mode: 1
