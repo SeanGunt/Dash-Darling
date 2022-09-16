@@ -1,33 +1,41 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float movementSpeed, lookSpeed, timeTillNextAttack, attackRate;
+    [SerializeField] float movementSpeed, lookSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject[] muzzleFlashes;
-    private int randomOption;
+    [SerializeField] TextMeshProUGUI pistolMagazineText;
+    private int randomOption, currentPistolMagazine;
+    private float timeTillNextAttack, pistolReloadTime;
 
-    void Update()
+    private void Awake()
+    {
+        SetPistolStats();
+    }
+    private void Update()
     {
         Scroll();
         GunLook();
-        if (Time.time >= timeTillNextAttack)
+        PistolReload();
+        if (Time.time >= timeTillNextAttack && currentPistolMagazine > 0)
         {
-            GunShoot();
-            timeTillNextAttack = Time.time + 1f/attackRate;
+            timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
+            PistolShoot();
         }
     }
 
 
-    void Scroll()
+    private void Scroll()
     {
         Vector2 direction = Vector2.right;
         rb.transform.position = new Vector2(rb.transform.position.x + direction.x * Time.deltaTime * movementSpeed, rb.transform.position.y);
     }
 
-    void GunLook()
+    private void GunLook()
     {
         Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gun.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -35,7 +43,7 @@ public class PlayerController : MonoBehaviour
         gun.rotation = Quaternion.Slerp(gun.rotation, rotation, lookSpeed * Time.deltaTime);
     }
 
-    void GunShoot()
+    private void PistolShoot()
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -43,6 +51,31 @@ public class PlayerController : MonoBehaviour
 
             randomOption = Random.Range(0, muzzleFlashes.Length);
             Instantiate(muzzleFlashes[randomOption], muzzleFlashPoint.position, gun.rotation);
+
+            currentPistolMagazine -= 1;
+            pistolMagazineText.text = currentPistolMagazine.ToString();
         }
+    }
+
+    private void PistolReload()
+    {
+        if (currentPistolMagazine == 0)
+        {
+            pistolReloadTime -= Time.deltaTime;
+            if (pistolReloadTime <= 0)
+            {
+                currentPistolMagazine = GameDataHolder.pistolMagazine;
+                    pistolMagazineText.text = currentPistolMagazine.ToString();
+                        pistolReloadTime = GameDataHolder.pistolReloadTime;
+            }
+    
+        }
+    }
+
+    private void SetPistolStats()
+    {
+        pistolMagazineText.text = GameDataHolder.pistolMagazine.ToString();
+            currentPistolMagazine = GameDataHolder.pistolMagazine;
+                pistolReloadTime = GameDataHolder.pistolReloadTime;
     }
 }

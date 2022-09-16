@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
-using System.Collections;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -49,6 +48,9 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         Debug.Log("Money is now at " + gameData.money);
+        Debug.Log("Pistol Damage is now at " + gameData.pistolDamage);
+        Debug.Log("Pistol FireRate is now at " + gameData.pistolFireRate);
+        Debug.Log("Pistol Magazine is now at " + gameData.pistolMagazine);
     }
 
     public void SaveGame()

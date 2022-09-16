@@ -476,7 +476,6 @@ MonoBehaviour:
   movementSpeed: 5
   lookSpeed: 50
   timeTillNextAttack: 0
-  attackRate: 4
   rb: {fileID: 5508009096035908954}
   gun: {fileID: 4475184043666171705}
   ejectionPoint: {fileID: 867606288}
@@ -485,6 +484,7 @@ MonoBehaviour:
   muzzleFlashes:
   - {fileID: 4694439705094808807, guid: 8e46b021a99e76b45bcd0a8125dba061, type: 3}
   - {fileID: 1446798340240976166, guid: f720edc8bfa4ae745bebaa122cb59bb4, type: 3}
+  pistolMagazineText: {fileID: 0}
 --- !u!60 &1784211260
 PolygonCollider2D:
   m_ObjectHideFlags: 0
