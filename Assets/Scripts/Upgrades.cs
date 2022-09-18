@@ -41,4 +41,13 @@ public class Upgrades : MonoBehaviour, IDataPersistence
         }
 
     }
+
+    public void PurchasePistolAmmo()
+    {
+        purchasable = false;
+        button.interactable = false;
+        GameDataHolder.money -= 1500;
+        GameDataHolder.pistolMagazine +=4;
+        Debug.Log("Ammo is now equal to " + GameDataHolder.pistolMagazine);
+    }
 }

@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI pistolMagazineText;
     private int randomOption, currentPistolMagazine;
     private float timeTillNextAttack, pistolReloadTime;
+    [SerializeField] private AudioSource playerSounds;
+    [SerializeField] AudioClip fireSound, reloadSound;
+    private bool soundPlayed = false;
 
     private void Awake()
     {
@@ -54,6 +57,8 @@ public class PlayerController : MonoBehaviour
 
             currentPistolMagazine -= 1;
             pistolMagazineText.text = currentPistolMagazine.ToString();
+
+            PlaySound(fireSound);
         }
     }
 
@@ -61,14 +66,20 @@ public class PlayerController : MonoBehaviour
     {
         if (currentPistolMagazine == 0)
         {
+            if(!soundPlayed)
+            {
+                PlaySound(reloadSound);
+                soundPlayed = true;
+            }
+
             pistolReloadTime -= Time.deltaTime;
             if (pistolReloadTime <= 0)
             {
                 currentPistolMagazine = GameDataHolder.pistolMagazine;
                     pistolMagazineText.text = currentPistolMagazine.ToString();
                         pistolReloadTime = GameDataHolder.pistolReloadTime;
+                        soundPlayed = false;   
             }
-    
         }
     }
 
@@ -77,5 +88,10 @@ public class PlayerController : MonoBehaviour
         pistolMagazineText.text = GameDataHolder.pistolMagazine.ToString();
             currentPistolMagazine = GameDataHolder.pistolMagazine;
                 pistolReloadTime = GameDataHolder.pistolReloadTime;
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        playerSounds.PlayOneShot(clip);
     }
 }
