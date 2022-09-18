@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
                         pistolReloadTime = GameDataHolder.pistolReloadTime;
                         soundPlayed = false;   
             }
+    
         }
     }
 
