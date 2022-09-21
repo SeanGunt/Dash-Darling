@@ -18,7 +18,7 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
             pistolDmgButton.GetComponent<Image>().color = Color.red;
         }
 
-        if(isPistolRoFPurchasable && GameDataHolder.money >= 1000)
+        if(isPistolRoFPurchasable && GameDataHolder.money >= 10000)
         {
             pistolRofButton.GetComponent<Image>().color = Color.green;
         }
@@ -28,7 +28,7 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
             pistolRofButton.GetComponent<Image>().color = Color.red;
         }
 
-        if(isPistolAmmoPurchasable && GameDataHolder.money >= 100)
+        if(isPistolAmmoPurchasable && GameDataHolder.money >= 10000)
         {
             pistolAmmoButton.GetComponent<Image>().color = Color.green;
         }
@@ -38,7 +38,7 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
             pistolAmmoButton.GetComponent<Image>().color = Color.red;
         }
         
-        if(isPistolReloadPurchasable && GameDataHolder.money >= 100)
+        if(isPistolReloadPurchasable && GameDataHolder.money >= 10000)
         {
             pistolReloadButton.GetComponent<Image>().color = Color.green;
         }
@@ -80,12 +80,12 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
 
     public void PurchasePistolRoF()
     {
-        if (isPistolRoFPurchasable && GameDataHolder.money >= 1000)
+        if (isPistolRoFPurchasable && GameDataHolder.money >= 10000)
         {
             isPistolRoFPurchasable = false;
             pistolRofButton.GetComponent<Image>().color = Color.red;
             pistolRofButton.interactable = false;
-            GameDataHolder.money -= 1000;
+            GameDataHolder.money -= 10000;
             MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
             GameDataHolder.pistolFireRate += 2;
             Debug.Log("Pistol RoF is now equal to " + GameDataHolder.pistolFireRate);
@@ -94,12 +94,12 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
 
     public void PurchasePistolAmmo()
     {
-        if (isPistolAmmoPurchasable && GameDataHolder.money >= 1000)
+        if (isPistolAmmoPurchasable && GameDataHolder.money >= 10000)
         {
             isPistolAmmoPurchasable = false;
             pistolAmmoButton.GetComponent<Image>().color = Color.red;
             pistolAmmoButton.interactable = false;
-            GameDataHolder.money -= 1000;
+            GameDataHolder.money -= 10000;
             MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
             GameDataHolder.pistolMagazine += 4;
             Debug.Log("Pistol RoF is now equal to " + GameDataHolder.pistolFireRate);
@@ -108,7 +108,7 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
 
     public void PurchasePistolReload()
     {
-        if(isPistolReloadPurchasable && GameDataHolder.money >= 1000)
+        if(isPistolReloadPurchasable && GameDataHolder.money >= 10000)
         {
             isPistolReloadPurchasable = false;
             pistolReloadButton.GetComponent<Image>().color = Color.red;
