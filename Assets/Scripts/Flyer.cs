@@ -6,26 +6,55 @@ public class Flyer : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] int health;
     [SerializeField] RectTransform healthBar;
+    private GameObject player;
     private Rigidbody2D rb;
+    private State state;
 
-    void Awake()
+    enum State
     {
+        moving, diving
+    }
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("Player");
+        state = State.moving;
         rb = this.GetComponent<Rigidbody2D>();
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
     }
 
     void Update()
     {
-        Move();
+        switch (state)
+        {
+            default:
+            case State.moving:
+                Move();
+            break;
+
+            case State.diving:
+                Diving();
+            break;
+        }
     }
 
-    void Move()
+    private void Move()
     {
         Vector2 direction = Vector2.left;
         rb.transform.position = new Vector2(rb.transform.position.x + direction.x * Time.deltaTime * speed, rb.transform.position.y);
+        
+        float distanceToPlayer = Vector2.Distance(player.transform.position, this.transform.position);
+        if (distanceToPlayer < 7)
+        {
+            state = State.diving;
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    private void Diving()
+    {
+        rb.transform.position = Vector2.Lerp(this.transform.position, player.transform.position, Time.deltaTime * 3);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
         {
