@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float movementSpeed, lookSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
-    [SerializeField] GameObject projectile;
+    [SerializeField] GameObject projectile, gameOverObj;
     [SerializeField] GameObject[] muzzleFlashes;
     [SerializeField] TextMeshProUGUI pistolMagazineText;
     private int randomOption, currentPistolMagazine;
@@ -94,5 +94,10 @@ public class PlayerController : MonoBehaviour
     private void PlaySound(AudioClip clip)
     {
         playerSounds.PlayOneShot(clip);
+    }
+
+    public void PlayerDeath()
+    {
+        gameOverObj.SetActive(true);
     }
 }
