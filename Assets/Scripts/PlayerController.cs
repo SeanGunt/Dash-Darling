@@ -6,11 +6,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float movementSpeed, lookSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
-    [SerializeField] GameObject projectile, gameOverObj;
+    [SerializeField] GameObject projectile, gameOverObj, reticle;
     [SerializeField] GameObject[] muzzleFlashes;
     [SerializeField] TextMeshProUGUI pistolMagazineText;
     private int randomOption, currentPistolMagazine;
     private float timeTillNextAttack, pistolReloadTime;
+    private SpriteRenderer reticleRenderer;
     [SerializeField] private AudioSource playerSounds;
     [SerializeField] AudioClip fireSound, reloadSound;
     private bool soundPlayed = false;
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        reticleRenderer = reticle.GetComponent<SpriteRenderer>();
+        Cursor.visible = false;
         state = State.alive;
         SetPistolStats();
     }
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             default:
             case State.alive:
+                Reticle();
                 Scroll();
                 GunLook();
                 PistolReload();
@@ -116,6 +120,22 @@ public class PlayerController : MonoBehaviour
     {
         movementSpeed = 0;
         gameOverObj.SetActive(true);
+        Cursor.visible = true;
+    }
+
+    private void Reticle()
+    {
+        Vector2 mouseCursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        reticle.transform.position = mouseCursorPos;
+
+        if (currentPistolMagazine <= 4)
+        {
+            reticleRenderer.color = new Color(1,0,0,0.5f);
+        }
+        else
+        {
+            reticleRenderer.color = new Color(1,1,1,0.5f);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
