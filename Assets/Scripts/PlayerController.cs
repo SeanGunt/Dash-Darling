@@ -8,29 +8,46 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
     [SerializeField] GameObject projectile, gameOverObj;
     [SerializeField] GameObject[] muzzleFlashes;
-    [SerializeField] TextMeshProUGUI pistolMagazineText;
+    [SerializeField] TextMeshProUGUI pistolMagazineText, timerText, deathTimerText;
     private int randomOption, currentPistolMagazine;
-    private float timeTillNextAttack, pistolReloadTime;
+    private float timeTillNextAttack, pistolReloadTime, timer;
     [SerializeField] private AudioSource playerSounds;
     [SerializeField] AudioClip fireSound, reloadSound;
     private bool soundPlayed = false;
+    private State state;
+    enum State
+    {
+        alive, dead
+    }
 
     private void Awake()
     {
+        state = State.alive;
         SetPistolStats();
     }
     private void Update()
     {
-        Scroll();
-        GunLook();
-        PistolReload();
-        if (Time.time >= timeTillNextAttack && currentPistolMagazine > 0)
+        switch (state)
         {
-            PistolShoot();
-            timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
-        }
-    }
+            default:
+            case State.alive:
+                Timer();
+                Scroll();
+                GunLook();
+                PistolReload();
+                if (Time.time >= timeTillNextAttack && currentPistolMagazine > 0)
+                {
+                    PistolShoot();
+                    timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
+                }
+            break;
 
+            case State.dead:
+                PlayerDeath();
+            break;
+        }
+            
+    }
 
     private void Scroll()
     {
@@ -96,8 +113,25 @@ public class PlayerController : MonoBehaviour
         playerSounds.PlayOneShot(clip);
     }
 
-    public void PlayerDeath()
+    private void PlayerDeath()
     {
+        movementSpeed = 0;
         gameOverObj.SetActive(true);
+        deathTimerText.text = timer.ToString("n1");
+        PlayerPrefs.SetFloat("Time Survived", timer);
+        PlayerPrefs.Save();
+    }
+    private void Timer()
+    {
+        timer += Time.deltaTime;
+        timerText.text = timer.ToString("n1");
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            state = State.dead;
+        }
     }
 }
