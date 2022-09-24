@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
     [SerializeField] GameObject projectile, gameOverObj;
     [SerializeField] GameObject[] muzzleFlashes;
-    [SerializeField] TextMeshProUGUI pistolMagazineText, timerText, deathTimerText;
+    [SerializeField] TextMeshProUGUI pistolMagazineText;
     private int randomOption, currentPistolMagazine;
-    private float timeTillNextAttack, pistolReloadTime, timer;
+    private float timeTillNextAttack, pistolReloadTime;
     [SerializeField] private AudioSource playerSounds;
     [SerializeField] AudioClip fireSound, reloadSound;
     private bool soundPlayed = false;
@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
         {
             default:
             case State.alive:
-                Timer();
                 Scroll();
                 GunLook();
                 PistolReload();
@@ -117,14 +116,6 @@ public class PlayerController : MonoBehaviour
     {
         movementSpeed = 0;
         gameOverObj.SetActive(true);
-        deathTimerText.text = timer.ToString("n1");
-        PlayerPrefs.SetFloat("Time Survived", timer);
-        PlayerPrefs.Save();
-    }
-    private void Timer()
-    {
-        timer += Time.deltaTime;
-        timerText.text = timer.ToString("n1");
     }
 
     void OnCollisionEnter2D(Collision2D other)
