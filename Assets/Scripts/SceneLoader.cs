@@ -16,6 +16,7 @@ public class SceneLoader : MonoBehaviour
     {
         DataPersistenceManager.instance.SaveGame();
         DataPersistenceManager.instance.LoadGame();
+        PlayerPrefs.Save();
         SceneManager.LoadScene(0);
     }
 
