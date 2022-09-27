@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         state = State.alive;
         SetPistolStats();
+        Time.timeScale = 1;
     }
     private void Update()
     {
@@ -120,6 +121,11 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerDeath()
     {
+
+        Debug.Log("Player is Dead");
+        gameOverObj.SetActive(true);
+        Time.timeScale = 0;
+
         movementSpeed = 0;
         gameOverObj.SetActive(true);
         Cursor.visible = true;
