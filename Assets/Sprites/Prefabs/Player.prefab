@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728361445}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.47, y: 1.17, z: -10}
+  m_LocalPosition: {x: 7.49, y: 2.49, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1714526329}
@@ -63,7 +63,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.83
+  orthographic size: 5.26
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -317,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2150087988725870162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.662, y: -1.426, z: 9.842984}
+  m_LocalPosition: {x: -7.71, y: -2.82, z: 9.842984}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1244690694}
@@ -348,7 +348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3462549661784097296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13, y: 0, z: 0}
+  m_LocalPosition: {x: -21.06, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 728361448}
@@ -384,7 +384,7 @@ Transform:
   m_GameObject: {fileID: 7787642310828426343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.7570343, y: 1.1938775, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 728361448}
   m_Father: {fileID: 0}
@@ -481,10 +481,15 @@ MonoBehaviour:
   ejectionPoint: {fileID: 867606288}
   muzzleFlashPoint: {fileID: 1864796743}
   projectile: {fileID: 1686269879949221100, guid: 16f45b0ec27af954496f6cfd3c27c5a3, type: 3}
+  gameOverObj: {fileID: 0}
+  reticle: {fileID: 0}
   muzzleFlashes:
   - {fileID: 4694439705094808807, guid: 8e46b021a99e76b45bcd0a8125dba061, type: 3}
   - {fileID: 1446798340240976166, guid: f720edc8bfa4ae745bebaa122cb59bb4, type: 3}
   pistolMagazineText: {fileID: 0}
+  timeText: {fileID: 0}
+  deathTimeText: {fileID: 0}
+  time: 0
   playerSounds: {fileID: 7303805526208689136}
   fireSound: {fileID: 8300000, guid: 5af8693eab0592d4ea0ba63f48fcbf8c, type: 3}
   reloadSound: {fileID: 8300000, guid: b1b4227c38dace648b4382133c9d8e4f, type: 3}

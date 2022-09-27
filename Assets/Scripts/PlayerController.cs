@@ -125,7 +125,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player is Dead");
         gameOverObj.SetActive(true);
         Time.timeScale = 0;
-
         movementSpeed = 0;
         gameOverObj.SetActive(true);
         Cursor.visible = true;
