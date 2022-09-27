@@ -1911,7 +1911,6 @@ GameObject:
   m_Component:
   - component: {fileID: 525542034}
   - component: {fileID: 525542033}
-  - component: {fileID: 525542035}
   m_Layer: 0
   m_Name: Reticle
   m_TagString: Untagged
@@ -1984,18 +1983,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &525542035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525542032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04cc6a767b2a0bc41bed90818441db7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &530601813
 GameObject:
   m_ObjectHideFlags: 0
@@ -5367,6 +5354,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7787642310828426343, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
   m_PrefabInstance: {fileID: 7787642311007493526}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1784211259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784211258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 850cddcfd8313c644b0862c4640c129f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1793223281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6514,9 +6513,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
+      propertyPath: lbGO
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
       propertyPath: reticle
       value: 
       objectReference: {fileID: 525542032}
+    - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
+      propertyPath: timeText
+      value: 
+      objectReference: {fileID: 315704952}
     - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
       propertyPath: timerText
       value: 
@@ -6525,6 +6532,10 @@ PrefabInstance:
       propertyPath: gameOverObj
       value: 
       objectReference: {fileID: 1746860835}
+    - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
+      propertyPath: deathTimeText
+      value: 
+      objectReference: {fileID: 1343794574}
     - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
       propertyPath: deathTimerText
       value: 
