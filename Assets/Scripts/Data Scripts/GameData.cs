@@ -7,7 +7,6 @@ public class GameData
     public float pistolFireRate;
     public int pistolMagazine;
     public float pistolReloadTime;
-    
     public GameData()
     {
         pistolDamage = 25;

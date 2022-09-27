@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
     [SerializeField] GameObject projectile, gameOverObj, reticle;
     [SerializeField] GameObject[] muzzleFlashes;
-    [SerializeField] TextMeshProUGUI pistolMagazineText;
+    [SerializeField] TextMeshProUGUI pistolMagazineText, timeText, deathTimeText;
     private int randomOption, currentPistolMagazine;
     private float timeTillNextAttack, pistolReloadTime;
+    [SerializeField] private float time;
     private SpriteRenderer reticleRenderer;
     [SerializeField] private AudioSource playerSounds;
     [SerializeField] AudioClip fireSound, reloadSound;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         {
             default:
             case State.alive:
+                CountTime();
                 Reticle();
                 Scroll();
                 GunLook();
@@ -121,6 +123,12 @@ public class PlayerController : MonoBehaviour
         movementSpeed = 0;
         gameOverObj.SetActive(true);
         Cursor.visible = true;
+        deathTimeText.text = time.ToString("n1");
+    }
+    private void CountTime()
+    {
+        time += Time.deltaTime;
+        timeText.text = time.ToString("n1");
     }
 
     private void Reticle()
