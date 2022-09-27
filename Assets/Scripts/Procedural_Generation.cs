@@ -5,11 +5,11 @@ public class Procedural_Generation : MonoBehaviour
     [SerializeField] float width, height;
     [SerializeField] GameObject flyingEnemy, enemy, player;
     [SerializeField] float minWaitZombie, maxWaitZombie, minWaitFlyer, maxWaitFlyer;
-    [SerializeField] GameObject platform;
+    [SerializeField] GameObject[] platforms;
     [SerializeField] GameObject[] backgrounds;
     [SerializeField] Transform generationPoint, destructionPoint;
     private float zombieTimer = 5f, backgroundTimer, flyerTimer = 10f, difficulty;
-    private int randomOption;
+    private int randomOptionBG, randomOptionPL;
 
     void Awake()
     {
@@ -35,24 +35,25 @@ public class Procedural_Generation : MonoBehaviour
     {
         if(transform.position.x < generationPoint.position.x)
         {
+            randomOptionPL = Random.Range(0, platforms.Length);
             transform.position = new Vector3(transform.position.x + width, transform.position.y, transform.position.z);
-            Instantiate(platform, transform.position, Quaternion.identity);
+            Instantiate(platforms[randomOptionPL], new Vector3(transform.position.x, 5, transform.position.z), Quaternion.identity);
 
-            randomOption = Random.Range(0, backgrounds.Length);
-            Instantiate(backgrounds[randomOption], new Vector3(transform.position.x, height, transform.position.z), Quaternion.identity);
+            randomOptionBG = Random.Range(0, backgrounds.Length);
+            Instantiate(backgrounds[randomOptionBG], new Vector3(transform.position.x, height, transform.position.z), Quaternion.identity);
         }
     }
 
     void SpawnZombie()
     {
-        Instantiate(enemy, new Vector2(player.transform.position.x + 25, 0.95f), Quaternion.identity);
+        Instantiate(enemy, new Vector2(player.transform.position.x + 25, 2.05f), Quaternion.identity);
 
         zombieTimer = Random.Range(minWaitZombie/difficulty,maxWaitZombie/difficulty);
     }
 
     void SpawnFlyer()
     {
-        Instantiate(flyingEnemy, new Vector2(player.transform.position.x + 25, 6f), Quaternion.identity);
+        Instantiate(flyingEnemy, new Vector2(player.transform.position.x + 25, 7.5f), Quaternion.identity);
 
         flyerTimer = Random.Range(minWaitFlyer/difficulty, maxWaitFlyer/difficulty);
     }
