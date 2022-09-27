@@ -6,32 +6,54 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float movementSpeed, lookSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
-    [SerializeField] GameObject projectile, gameOverObj;
+    [SerializeField] GameObject projectile, gameOverObj, reticle;
     [SerializeField] GameObject[] muzzleFlashes;
-    [SerializeField] TextMeshProUGUI pistolMagazineText;
+    [SerializeField] TextMeshProUGUI pistolMagazineText, timeText, deathTimeText;
     private int randomOption, currentPistolMagazine;
     private float timeTillNextAttack, pistolReloadTime;
+    [SerializeField] private float time;
+    private SpriteRenderer reticleRenderer;
     [SerializeField] private AudioSource playerSounds;
     [SerializeField] AudioClip fireSound, reloadSound;
     private bool soundPlayed = false;
+    private State state;
+    enum State
+    {
+        alive, dead
+    }
 
     private void Awake()
     {
+        reticleRenderer = reticle.GetComponent<SpriteRenderer>();
+        Cursor.visible = false;
+        state = State.alive;
         SetPistolStats();
         Time.timeScale = 1;
     }
     private void Update()
     {
-        Scroll();
-        GunLook();
-        PistolReload();
-        if (Time.time >= timeTillNextAttack && currentPistolMagazine > 0)
+        switch (state)
         {
-            PistolShoot();
-            timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
-        }
-    }
+            default:
+            case State.alive:
+                CountTime();
+                Reticle();
+                Scroll();
+                GunLook();
+                PistolReload();
+                if (Time.time >= timeTillNextAttack && currentPistolMagazine > 0)
+                {
+                    PistolShoot();
+                    timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
+                }
+            break;
 
+            case State.dead:
+                PlayerDeath();
+            break;
+        }
+            
+    }
 
     private void Scroll()
     {
@@ -97,10 +119,44 @@ public class PlayerController : MonoBehaviour
         playerSounds.PlayOneShot(clip);
     }
 
-    public void PlayerDeath()
+    private void PlayerDeath()
     {
+
         Debug.Log("Player is Dead");
         gameOverObj.SetActive(true);
         Time.timeScale = 0;
+
+        movementSpeed = 0;
+        gameOverObj.SetActive(true);
+        Cursor.visible = true;
+        deathTimeText.text = time.ToString("n1");
+    }
+    private void CountTime()
+    {
+        time += Time.deltaTime;
+        timeText.text = time.ToString("n1");
+    }
+
+    private void Reticle()
+    {
+        Vector2 mouseCursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        reticle.transform.position = mouseCursorPos;
+
+        if (currentPistolMagazine <= 4)
+        {
+            reticleRenderer.color = new Color(1,0,0,0.5f);
+        }
+        else
+        {
+            reticleRenderer.color = new Color(1,1,1,0.5f);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            state = State.dead;
+        }
     }
 }
