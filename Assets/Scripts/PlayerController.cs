@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
         playerSounds.PlayOneShot(clip);
     }
 
-    private void PlayerDeath()
+    public void PlayerDeath()
     {
 
         Debug.Log("Player is Dead");
