@@ -29,7 +29,13 @@ public class Flyer : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            PlayerController playCon = other.gameObject.GetComponent<PlayerController>();
+
+            if(playCon != null)
+            {
+                playCon.Death();
+            }
         }
         if (other.gameObject.tag == "Pistol")
         {
