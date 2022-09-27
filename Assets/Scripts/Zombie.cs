@@ -28,7 +28,13 @@ public class Zombie : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
+
+            if(player != null)
+            {
+                player.PlayerDeath();
+            }
         }
         if (other.gameObject.tag == "Pistol")
         {

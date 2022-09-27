@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         SetPistolStats();
+        Time.timeScale = 1;
     }
     private void Update()
     {
@@ -98,6 +99,8 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDeath()
     {
+        Debug.Log("Player is Dead");
         gameOverObj.SetActive(true);
+        Time.timeScale = 0;
     }
 }
