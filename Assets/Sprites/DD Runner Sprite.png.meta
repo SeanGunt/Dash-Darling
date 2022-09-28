@@ -1,0 +1,414 @@
+fileFormatVersion: 2
+guid: 6887fe1a19ab17248a4cbef3886510bd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3191750781075928231
+    second: DD Runner Sprite_0
+  - first:
+      213: 8471015799817346652
+    second: DD Runner Sprite_1
+  - first:
+      213: -6385103438413198615
+    second: DD Runner Sprite_2
+  - first:
+      213: 6284934953898455221
+    second: DD Runner Sprite_3
+  - first:
+      213: -5865589978792052798
+    second: DD Runner Sprite_4
+  - first:
+      213: -1816624615698058650
+    second: DD Runner Sprite_5
+  - first:
+      213: 8723689847371177611
+    second: DD Runner Sprite_6
+  - first:
+      213: 5442163051500304528
+    second: DD Runner Sprite_7
+  - first:
+      213: -91041271967156261
+    second: DD Runner Sprite_8
+  - first:
+      213: 3217152987913169733
+    second: DD Runner Sprite_9
+  - first:
+      213: 4895383719011592905
+    second: DD Runner Sprite_10
+  - first:
+      213: 3351082749229168239
+    second: DD Runner Sprite_11
+  - first:
+      213: -6622236040144154801
+    second: DD Runner Sprite_12
+  - first:
+      213: -4847209048004543767
+    second: DD Runner Sprite_13
+  - first:
+      213: 2084653528591640892
+    second: DD Runner Sprite_14
+  - first:
+      213: 8403470761951846198
+    second: DD Runner Sprite_15
+  - first:
+      213: 7790099328480914262
+    second: DD Runner Sprite_16
+  - first:
+      213: -1730608848473454201
+    second: DD Runner Sprite_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 375
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DD Runner Sprite_0
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 0
+        width: 632
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95bc462439f94b3d0800000000000000
+      internalID: -3191750781075928231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_3
+      rect:
+        serializedVersion: 2
+        x: 3268
+        y: 0
+        width: 526
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b0bd83aa03983750800000000000000
+      internalID: 6284934953898455221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_4
+      rect:
+        serializedVersion: 2
+        x: 5136
+        y: 27
+        width: 658
+        height: 964
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c73204ddfc399ea0800000000000000
+      internalID: -5865589978792052798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_5
+      rect:
+        serializedVersion: 2
+        x: 6161
+        y: 0
+        width: 633
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6623613798d0ac6e0800000000000000
+      internalID: -1816624615698058650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_8
+      rect:
+        serializedVersion: 2
+        x: 9272
+        y: 0
+        width: 522
+        height: 1000
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd77f7c027e8cbef0800000000000000
+      internalID: -91041271967156261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_9
+      rect:
+        serializedVersion: 2
+        x: 11142
+        y: 27
+        width: 656
+        height: 964
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54ba6a8e89f95ac20800000000000000
+      internalID: 3217152987913169733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_11
+      rect:
+        serializedVersion: 2
+        x: 4228
+        y: 21
+        width: 562
+        height: 958
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f667eb07100718e20800000000000000
+      internalID: 3351082749229168239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_13
+      rect:
+        serializedVersion: 2
+        x: 10228
+        y: 21
+        width: 567
+        height: 958
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ea31ad6d014bbcb0800000000000000
+      internalID: -4847209048004543767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_14
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 0
+        width: 615
+        height: 974
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39287bd65d2eec10800000000000000
+      internalID: 2084653528591640892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_15
+      rect:
+        serializedVersion: 2
+        x: 2277
+        y: 0
+        width: 515
+        height: 950
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63f558e62202f9470800000000000000
+      internalID: 8403470761951846198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_16
+      rect:
+        serializedVersion: 2
+        x: 7187
+        y: 0
+        width: 609
+        height: 974
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65b2d17c01efb1c60800000000000000
+      internalID: 7790099328480914262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DD Runner Sprite_17
+      rect:
+        serializedVersion: 2
+        x: 8278
+        y: 0
+        width: 519
+        height: 950
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7898795eb64abf7e0800000000000000
+      internalID: -1730608848473454201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
