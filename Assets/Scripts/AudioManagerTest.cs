@@ -49,6 +49,7 @@ public class AudioManagerTest : MonoBehaviour
         PlayerPrefs.SetFloat(BGMPref, bgmSlider.value);
         PlayerPrefs.SetFloat(SFXPref, sfxSlider.value);
         PlayerPrefs.SetFloat(MasPref, masSlider.value);
+        PlayerPrefs.Save();
     }
 
     void OnApplicationFocus(bool inFocus)

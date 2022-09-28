@@ -3,6 +3,8 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] Scoreboard sb;
+    ScoreboardEntryData newEntry = new ScoreboardEntryData();
     [SerializeField] float movementSpeed, lookSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
@@ -15,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer reticleRenderer;
     [SerializeField] private AudioSource playerSounds;
     [SerializeField] AudioClip fireSound, reloadSound;
-    private bool soundPlayed = false;
+    private bool soundPlayed = false, timeAdded;
     private State state;
     enum State
     {
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        timeAdded = false;
         reticleRenderer = reticle.GetComponent<SpriteRenderer>();
         Cursor.visible = false;
         state = State.alive;
@@ -125,10 +128,15 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player is Dead");
         gameOverObj.SetActive(true);
         Time.timeScale = 0;
-        movementSpeed = 0;
         gameOverObj.SetActive(true);
         Cursor.visible = true;
         deathTimeText.text = time.ToString("n1");
+        if (timeAdded == false)
+        {
+            sb.AddEntry(newEntry = new ScoreboardEntryData(){ entryTime = time});
+            timeAdded = true;
+        }
+        
     }
     private void CountTime()
     {
