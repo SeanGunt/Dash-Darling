@@ -46,7 +46,7 @@ public class Procedural_Generation : MonoBehaviour
 
     void SpawnZombie()
     {
-        Instantiate(enemy, new Vector2(player.transform.position.x + 25, 2.05f), Quaternion.identity);
+        Instantiate(enemy, new Vector2(player.transform.position.x + 25, 3.03f), Quaternion.identity);
 
         zombieTimer = Random.Range(minWaitZombie/difficulty,maxWaitZombie/difficulty);
     }
