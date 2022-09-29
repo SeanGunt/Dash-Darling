@@ -42,7 +42,7 @@ public class Zombie : MonoBehaviour
             healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(GameDataHolder.pistolDamage,0);
             if (health <= 0)
             {
-                GameDataHolder.money += 100;
+                GameDataHolder.money += 250;
                 MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
                 Destroy(this.gameObject);
             }
