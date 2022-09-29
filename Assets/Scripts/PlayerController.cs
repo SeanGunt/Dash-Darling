@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gun.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(Mathf.Clamp(angle, -90, 90), Vector3.forward);
+        Quaternion rotation = Quaternion.AngleAxis(Mathf.Clamp(angle, -35, 90), Vector3.forward);
         gun.rotation = Quaternion.Slerp(gun.rotation, rotation, lookSpeed * Time.deltaTime);
     }
 
