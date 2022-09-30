@@ -6,11 +6,20 @@ public class Zombie : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] RectTransform healthBar;
     private Rigidbody2D rb;
+    [SerializeField] AudioSource audioSource;
+
+    [SerializeField] AudioClip spawnSound, deathSound;
 
     void Awake()
     {
         rb = this.GetComponent<Rigidbody2D>();
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+        PlaySound(spawnSound);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 
     void Update()
@@ -45,6 +54,7 @@ public class Zombie : MonoBehaviour
                 GameDataHolder.money += 250;
                 MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
                 Destroy(this.gameObject);
+                PlaySound(deathSound);
             }
         }
     }

@@ -8,6 +8,8 @@ public class Flyer : MonoBehaviour
     [SerializeField] RectTransform healthBar;
     private GameObject player;
     private Rigidbody2D rb;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip spawnSound, deathSound;
     private State state;
 
     enum State
@@ -20,6 +22,12 @@ public class Flyer : MonoBehaviour
         state = State.moving;
         rb = this.GetComponent<Rigidbody2D>();
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+        PlaySound(spawnSound);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 
     void Update()
@@ -75,6 +83,7 @@ public class Flyer : MonoBehaviour
                 GameDataHolder.money += 100;
                 MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
                 Destroy(this.gameObject);
+                PlaySound(deathSound);
             }
         }
     }
