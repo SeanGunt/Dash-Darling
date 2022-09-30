@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Flyer : MonoBehaviour
 {
@@ -66,7 +65,6 @@ public class Flyer : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //Destroy(this.gameObject);
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
             if(player != null)
@@ -78,6 +76,7 @@ public class Flyer : MonoBehaviour
         {
             health = health - GameDataHolder.pistolDamage;
             healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(GameDataHolder.pistolDamage,0);
+
             if (health <= 0)
             {
                 GameDataHolder.money += 100;
