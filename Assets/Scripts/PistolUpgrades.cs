@@ -113,7 +113,7 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
             isPistolReloadPurchasable = false;
             pistolReloadButton.GetComponent<Image>().color = Color.red;
             pistolReloadButton.interactable = false;
-            GameDataHolder.money -= 1000;
+            GameDataHolder.money -= 10000;
             MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
             GameDataHolder.pistolReloadTime -= 1.0f;
             Debug.Log("Pistol Reload Time is now " + GameDataHolder.pistolReloadTime);
