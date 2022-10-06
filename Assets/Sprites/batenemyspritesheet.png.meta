@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -241,6 +242,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      batenemyspritesheet_4: 7050532134549660771
+      batenemyspritesheet_0: -6707778565330116482
+      batenemyspritesheet_3: 8265041239431399092
+      batenemyspritesheet_1: 3231329457834983580
+      batenemyspritesheet_2: -7051389823715782152
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

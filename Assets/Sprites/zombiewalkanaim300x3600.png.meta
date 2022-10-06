@@ -60,6 +60,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -400,6 +401,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      zombiewalkanaim300x3600_8: -5324993845417774636
+      zombiewalkanaim300x3600_9: -6953261366490188738
+      zombiewalkanaim300x3600_1: -3190707724018523484
+      zombiewalkanaim300x3600_6: -6329636726519913410
+      zombiewalkanaim300x3600_10: 1672137441148171563
+      zombiewalkanaim300x3600_4: 6177131400500014022
+      zombiewalkanaim300x3600_7: -6212326894200686416
+      zombiewalkanaim300x3600_3: -498807138279939395
+      zombiewalkanaim300x3600_0: -759938929643254576
+      zombiewalkanaim300x3600_5: -7873957017017514036
+      zombiewalkanaim300x3600_11: 3096833844102075855
+      zombiewalkanaim300x3600_2: 7900232949226217314
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

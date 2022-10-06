@@ -78,6 +78,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -418,6 +419,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      DD Runner Sprite_5: -1816624615698058650
+      DD Runner Sprite_11: 3351082749229168239
+      DD Runner Sprite_8: -91041271967156261
+      DD Runner Sprite_0: -3191750781075928231
+      DD Runner Sprite_13: -4847209048004543767
+      DD Runner Sprite_16: 7790099328480914262
+      DD Runner Sprite_15: 8403470761951846198
+      DD Runner Sprite_4: -5865589978792052798
+      DD Runner Sprite_17: -1730608848473454201
+      DD Runner Sprite_9: 3217152987913169733
+      DD Runner Sprite_3: 6284934953898455221
+      DD Runner Sprite_14: 2084653528591640892
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
