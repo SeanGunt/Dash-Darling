@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource playerSounds;
     [SerializeField] AudioClip fireSound, reloadSound;
     private bool soundPlayed = false, timeAdded;
+    private Color reticleStartColor = new Color(0,0,1,1);
+    private Color reticleMiddleColor = new Color(1,0.5f,0,1);
+    private Color reticleEndColor = new Color(1,0,0,1);
     private State state;
     enum State
     {
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour
             pistolMagazineText.text = currentPistolMagazine.ToString();
 
             PlaySound(fireSound);
+
         }
     }
 
@@ -97,7 +101,7 @@ public class PlayerController : MonoBehaviour
                 PlaySound(reloadSound);
                 soundPlayed = true;
             }
-
+            reticleRenderer.color = Color.Lerp(reticleStartColor, reticleEndColor, pistolReloadTime);
             pistolReloadTime -= Time.deltaTime;
             if (pistolReloadTime <= 0)
             {
@@ -128,7 +132,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player is Dead");
         gameOverObj.SetActive(true);
         Time.timeScale = 0;
-        gameOverObj.SetActive(true);
         Cursor.visible = true;
         deathTimeText.text = time.ToString("n1");
         if (timeAdded == false)
@@ -148,15 +151,19 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 mouseCursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         reticle.transform.position = mouseCursorPos;
-
-        if (currentPistolMagazine <= 4)
+        if (currentPistolMagazine == GameDataHolder.pistolMagazine)
         {
-            reticleRenderer.color = new Color(1,0,0,0.5f);
+            reticleRenderer.color = reticleStartColor;
         }
-        else
+        else if (currentPistolMagazine == GameDataHolder.pistolMagazine/2)
         {
-            reticleRenderer.color = new Color(1,1,1,0.5f);
+            reticleRenderer.color = reticleMiddleColor;
         }
+        else if (currentPistolMagazine == GameDataHolder.pistolMagazine/4)
+        {
+            reticleRenderer.color = reticleEndColor;
+        }
+        
     }
 
     void OnCollisionEnter2D(Collision2D other)
