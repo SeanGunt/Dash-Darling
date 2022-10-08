@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour
     private float timeTillNextAttack, pistolReloadTime;
     [SerializeField] private float time;
     private SpriteRenderer reticleRenderer;
-    [SerializeField] private AudioSource playerSounds;
-    [SerializeField] AudioClip fireSound, reloadSound;
+    [SerializeField] private AudioSource playerSounds, bgmSource;
+    [SerializeField] AudioClip fireSound, reloadSound, deathSound;
     private bool soundPlayed = false, timeAdded;
     private Color reticleStartColor = new Color(0,0,1,1);
     private Color reticleMiddleColor = new Color(1,0.5f,0,1);
@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         state = State.alive;
         SetPistolStats();
         Time.timeScale = 1;
+        soundPlayed = false;
     }
     private void Update()
     {
@@ -138,6 +139,13 @@ public class PlayerController : MonoBehaviour
         {
             sb.AddEntry(newEntry = new ScoreboardEntryData(){ entryTime = time});
             timeAdded = true;
+        }
+
+        bgmSource.Stop();
+        if(!soundPlayed)
+        {
+            PlaySound(deathSound);
+            soundPlayed = true;
         }
         
     }
