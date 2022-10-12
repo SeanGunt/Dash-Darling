@@ -8171,7 +8171,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Faster Reload
+  m_text: 'Reload Speed
+
+    - 1 second'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2edc3e97269390440b26fa147023eb4f, type: 2}
   m_sharedMaterial: {fileID: -3060409724041708922, guid: 2edc3e97269390440b26fa147023eb4f, type: 2}

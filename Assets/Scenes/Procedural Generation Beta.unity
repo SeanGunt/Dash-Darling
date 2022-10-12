@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 105657681}
   - component: {fileID: 105657680}
   - component: {fileID: 105657679}
+  - component: {fileID: 105657683}
   m_Layer: 5
   m_Name: Pause Button
   m_TagString: Untagged
@@ -413,7 +414,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -434,19 +435,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 105657681}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 105657679}
-        m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
-        m_MethodName: OnPauseButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &105657681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +474,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105657677}
   m_CullTransparentMesh: 1
+--- !u!114 &105657683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105657677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 105657679}
+          m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+          m_MethodName: OnHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 105657679}
+          m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+          m_MethodName: OnHoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 105657679}
+          m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+          m_MethodName: OnPauseButtonClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &148142915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1488,7 @@ RectTransform:
   - {fileID: 1403877049}
   - {fileID: 1599199138}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2077,7 +2127,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &530601813
 GameObject:
@@ -3883,6 +3933,7 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 5979420231107192632, guid: 66f9f2a9a2a4fc04eb4c791d7fa0cc7b, type: 3}
   - {fileID: 37662461793533956, guid: 908e778d033504b42b49e1ae7584cbe0, type: 3}
+  targetIndicator: {fileID: 4243665376019103375, guid: f0f25d85360702549b82c7eeca211b25, type: 3}
   generationPoint: {fileID: 1714526329}
   destructionPoint: {fileID: 7787642311007493527}
 --- !u!1 &1227739953
@@ -5277,7 +5328,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1649296599
 GameObject:
@@ -5631,7 +5682,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1714526329 stripped
 Transform:
@@ -5708,7 +5759,7 @@ Transform:
   - {fileID: 451895830}
   - {fileID: 1176243496}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746860835
 GameObject:
@@ -7096,7 +7147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4246004782054256230, guid: 22caee17d7a6d1c4eb71dcf950b72194, type: 3}
       propertyPath: m_Name
-      value: Untitled_Artwork_19
+      value: Floor_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22caee17d7a6d1c4eb71dcf950b72194, type: 3}
@@ -7196,6 +7247,14 @@ PrefabInstance:
       propertyPath: pistolMagazineText
       value: 
       objectReference: {fileID: 148142917}
+    - target: {fileID: 1471708161, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088637601, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4475184043666171705, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.45

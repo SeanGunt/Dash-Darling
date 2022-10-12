@@ -344,7 +344,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -759938929643254576, guid: 17dae6f8444da70438165f5567c8b863, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eebf5c8fe4a45ed40bd05f82950bba64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1.5
   health: 100
   healthBar: {fileID: 3817543925081225718}
   audioSource: {fileID: 8111175368258656318}
@@ -430,8 +430,8 @@ PolygonCollider2D:
       - {x: 0.52, y: -1.36}
       - {x: 0.42999998, y: -1.3299999}
       - {x: 0.32, y: -1.4599999}
-      - {x: 0.34, y: -1.5}
-      - {x: 0.94, y: -1.5}
+      - {x: 0.33692783, y: -1.5276492}
+      - {x: 0.93692786, y: -1.5307212}
       - {x: 0.94, y: -1.4399999}
       - {x: 0.91999996, y: -1.31}
       - {x: 0.89, y: -1.26}
@@ -476,8 +476,8 @@ PolygonCollider2D:
       - {x: -0.29, y: -1.36}
       - {x: -0.42, y: -1.37}
       - {x: -0.45999998, y: -1.49}
-      - {x: -0.44, y: -1.5}
-      - {x: 0.06, y: -1.5}
+      - {x: -0.4338557, y: -1.5368656}
+      - {x: 0.07228851, y: -1.5430098}
       - {x: 0.089999996, y: -1.4699999}
       - {x: 0.08, y: -1.39}
       - {x: 0.06, y: -1.2099999}
@@ -526,7 +526,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

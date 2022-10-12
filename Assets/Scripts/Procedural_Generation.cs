@@ -7,6 +7,7 @@ public class Procedural_Generation : MonoBehaviour
     [SerializeField] float minWaitZombie, maxWaitZombie, minWaitFlyer, maxWaitFlyer;
     [SerializeField] GameObject[] platforms;
     [SerializeField] GameObject[] backgrounds;
+    [SerializeField] private GameObject targetIndicator;
     [SerializeField] Transform generationPoint, destructionPoint;
     private float zombieTimer = 5f, backgroundTimer, flyerTimer = 10f, difficulty;
     private int randomOptionBG, randomOptionPL;
@@ -46,14 +47,20 @@ public class Procedural_Generation : MonoBehaviour
 
     void SpawnZombie()
     {
-        Instantiate(enemy, new Vector2(player.transform.position.x + 25, 3.03f), Quaternion.identity);
+        GameObject baseZombie = Instantiate(enemy, new Vector2(player.transform.position.x + 25, 3.03f), Quaternion.identity);
+        Vector2 targetPosition = new Vector2(baseZombie.transform.position.x - 8.5f, baseZombie.transform.position.y);
+        GameObject target = Instantiate(targetIndicator, targetPosition, Quaternion.identity);
+        Destroy(target, 1.5f);
 
         zombieTimer = Random.Range(minWaitZombie/difficulty,maxWaitZombie/difficulty);
     }
 
     void SpawnFlyer()
     {
-        Instantiate(flyingEnemy, new Vector2(player.transform.position.x + 25, 7.5f), Quaternion.identity);
+        GameObject baseBat = Instantiate(flyingEnemy, new Vector2(player.transform.position.x + 25, 7.5f), Quaternion.identity);
+        Vector2 targetPosition = new Vector2(baseBat.transform.position.x - 8.5f, baseBat.transform.position.y);
+        GameObject target = Instantiate(targetIndicator, targetPosition, Quaternion.identity);
+        Destroy(target, 1.5f);
 
         flyerTimer = Random.Range(minWaitFlyer/difficulty, maxWaitFlyer/difficulty);
     }

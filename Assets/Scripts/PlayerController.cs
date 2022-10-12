@@ -48,11 +48,12 @@ public class PlayerController : MonoBehaviour
                 Scroll();
                 GunLook();
                 PistolReload();
-                if (Time.time >= timeTillNextAttack && currentPistolMagazine > 0)
+                if (Time.time >= timeTillNextAttack && currentPistolMagazine > 0 && reticle.activeInHierarchy == true)
                 {
                     PistolShoot();
                     timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
                 }
+                Debug.Log(reticle.activeInHierarchy);
             break;
 
             case State.dead:

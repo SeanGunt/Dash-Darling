@@ -6,7 +6,7 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
     [SerializeField] Button pistolDmgButton, pistolRofButton, pistolAmmoButton, pistolReloadButton;
     private bool isPistolDmgPurchasable, isPistolRoFPurchasable, isPistolAmmoPurchasable, isPistolReloadPurchasable;
 
-    private void Awake()
+    private void Update()
     {
         if (isPistolDmgPurchasable && GameDataHolder.money >= 1000)
         {
