@@ -22,6 +22,14 @@ public class SlowAbility : MonoBehaviour
     {
         state = State.ReadyToActivate;
         clicked = false;
+        if ( GameDataHolder.slowAbilityPurchased == false)
+        {
+            slowButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            slowButton.gameObject.SetActive(true);
+        }
     }
     public void Click()
     {
