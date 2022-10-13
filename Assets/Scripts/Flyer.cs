@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Flyer : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] public static float speed = 3.0f;
     [SerializeField] int health;
     [SerializeField] RectTransform healthBar;
     private GameObject player;
     private Rigidbody2D rb;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip spawnSound, deathSound;
+    [SerializeField] AudioClip spawnSound;
     private State state;
 
     enum State
@@ -58,7 +58,7 @@ public class Flyer : MonoBehaviour
 
     private void Diving()
     {
-        rb.transform.position = Vector2.Lerp(this.transform.position, player.transform.position, Time.deltaTime * 3);
+        rb.transform.position = Vector2.Lerp(this.transform.position, player.transform.position, Time.deltaTime * speed);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -82,7 +82,6 @@ public class Flyer : MonoBehaviour
                 GameDataHolder.money += 100;
                 MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
                 Destroy(this.gameObject);
-                PlaySound(deathSound);
             }
         }
     }
