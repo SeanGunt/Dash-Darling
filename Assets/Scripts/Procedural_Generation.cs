@@ -7,7 +7,7 @@ public class Procedural_Generation : MonoBehaviour
     [SerializeField] float minWaitZombie, maxWaitZombie, minWaitFlyer, maxWaitFlyer;
     [SerializeField] GameObject[] platforms;
     [SerializeField] GameObject[] backgrounds;
-    [SerializeField] private GameObject targetIndicator;
+    [SerializeField] private GameObject targetIndicator, skyLight;
     [SerializeField] Transform generationPoint, destructionPoint;
     private float zombieTimer = 5f, backgroundTimer, flyerTimer = 10f, difficulty;
     private int randomOptionBG, randomOptionPL;

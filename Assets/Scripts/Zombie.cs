@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-    [SerializeField] float speed;
+    [SerializeField] public static float speed = 1.5f;
     [SerializeField] int health;
     [SerializeField] RectTransform healthBar;
     private Rigidbody2D rb;
     [SerializeField] AudioSource audioSource;
-
-    [SerializeField] AudioClip spawnSound, deathSound;
+    [SerializeField] private ParticleSystem deathParticles;
+    [SerializeField] AudioClip spawnSound;
 
     void Awake()
     {
@@ -53,8 +53,9 @@ public class Zombie : MonoBehaviour
             {
                 GameDataHolder.money += 250;
                 MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
+                deathParticles.transform.position = this.transform.position;
+                Instantiate(deathParticles, this.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
-                PlaySound(deathSound);
             }
         }
     }

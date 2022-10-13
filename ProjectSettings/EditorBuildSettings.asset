@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TItleScreen.unity
     guid: 764f512611c30024782adb9f0d7332b8
   - enabled: 1
-    path: Assets/Scenes/Procedural Generation Beta.unity
+    path: Assets/Scenes/InfiniteLevel.unity
     guid: c6ec2f1890f9b274cb30e69e8802ad59
   m_configObjects: {}

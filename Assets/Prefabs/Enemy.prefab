@@ -389,12 +389,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eebf5c8fe4a45ed40bd05f82950bba64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
   health: 100
   healthBar: {fileID: 3817543925081225718}
   audioSource: {fileID: 8111175368258656318}
+  deathParticles: {fileID: 3103133582827542267, guid: 725fa6ef0ff0c974c8fc31c26e44cd9f, type: 3}
   spawnSound: {fileID: 8300000, guid: d041f0251e4622742b7764a91509956d, type: 3}
-  deathSound: {fileID: 8300000, guid: 8fe6e410575fc1b4799c7ae948a74106, type: 3}
 --- !u!60 &4201621025590317352
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -526,7 +525,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.45820773
   m_Pitch: 1
   Loop: 0
   Mute: 0
