@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SlowAbility : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class SlowAbility : MonoBehaviour
     private State state;
     [SerializeField] private Button slowButton;
     private bool clicked;
+    [SerializeField] private TextMeshProUGUI slowAbilityText;
     enum State
     {
         OnCooldown, ReadyToActivate, InProgress
@@ -37,6 +39,7 @@ public class SlowAbility : MonoBehaviour
         switch (state)
         {
             case State.ReadyToActivate:
+                slowAbilityText.text = "Slow Ability Ready";
                 if (clicked)
                 {
                     Activate();
@@ -46,6 +49,7 @@ public class SlowAbility : MonoBehaviour
 
             case State.InProgress:
                 slowTimer -= Time.deltaTime;
+                slowAbilityText.text = "In Progress " + slowTimer.ToString("n0");
                 if (slowTimer < 0)
                 {
                     Zombie.speed = 1.5f;
@@ -56,6 +60,7 @@ public class SlowAbility : MonoBehaviour
 
             case State.OnCooldown:
                 cooldownTimer -= Time.deltaTime;
+                slowAbilityText.text = "On Cooldown " + cooldownTimer.ToString("n0");
                 if (cooldownTimer < 0)
                 {
                     slowTimer = 10f;
