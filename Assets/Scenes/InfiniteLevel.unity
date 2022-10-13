@@ -5303,8 +5303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -874.9, y: -9.1}
-  m_SizeDelta: {x: 170.4, y: 121.1}
+  m_AnchoredPosition: {x: -870, y: -5.300005}
+  m_SizeDelta: {x: 180, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1475000346
 MonoBehaviour:
@@ -6897,6 +6897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowButton: {fileID: 1475000346}
+  slowAbilityText: {fileID: 1955800360}
 --- !u!1 &1955800358
 GameObject:
   m_ObjectHideFlags: 0
