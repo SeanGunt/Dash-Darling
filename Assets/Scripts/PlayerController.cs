@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Scoreboard sb;
     ScoreboardEntryData newEntry = new ScoreboardEntryData();
-    [SerializeField] float movementSpeed, lookSpeed;
+    [SerializeField] public float movementSpeed, lookSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
     [SerializeField] GameObject projectile, gameOverObj, reticle;
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource playerSounds, bgmSource;
     [SerializeField] AudioClip fireSound, reloadSound, deathSound;
     private bool soundPlayed = false, timeAdded;
+    public bool invincible;
     private Color reticleStartColor = new Color(0,0,1,1);
     private Color reticleMiddleColor = new Color(1,0.5f,0,1);
     private Color reticleEndColor = new Color(1,0,0,1);
@@ -177,9 +178,13 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && !invincible)
         {
             state = State.dead;
+        }
+        else
+        {
+            return;
         }
     }
 }

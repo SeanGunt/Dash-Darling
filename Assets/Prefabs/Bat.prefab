@@ -173,6 +173,7 @@ MonoBehaviour:
   healthBar: {fileID: 593094306927014339}
   audioSource: {fileID: 4500094324928749433}
   spawnSound: {fileID: 8300000, guid: d280f6f2e8c168b4b8710d59663fb046, type: 3}
+  deathParticles: {fileID: 3103133582827542267, guid: 725fa6ef0ff0c974c8fc31c26e44cd9f, type: 3}
 --- !u!82 &4500094324928749433
 AudioSource:
   m_ObjectHideFlags: 0

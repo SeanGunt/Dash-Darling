@@ -9,6 +9,7 @@ public class Flyer : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip spawnSound;
+    [SerializeField] private ParticleSystem deathParticles;
     private State state;
 
     enum State
@@ -59,6 +60,12 @@ public class Flyer : MonoBehaviour
     private void Diving()
     {
         rb.transform.position = Vector2.Lerp(this.transform.position, player.transform.position, Time.deltaTime * speed);
+
+        float distanceToPlayer = Vector2.Distance(player.transform.position, this.transform.position);
+        if (distanceToPlayer > 7)
+        {
+            state = State.moving;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -67,9 +74,13 @@ public class Flyer : MonoBehaviour
         {
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
-            if(player != null)
+            if(player != null && !player.invincible)
             {
                 player.PlayerDeath();
+            }
+            else
+            {
+                Death();
             }
         }
         if (other.gameObject.tag == "Pistol")
@@ -79,10 +90,17 @@ public class Flyer : MonoBehaviour
 
             if (health <= 0)
             {
-                GameDataHolder.money += 100;
-                MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
-                Destroy(this.gameObject);
+                Death();
             }
         }
+    }
+
+    private void Death()
+    {
+        GameDataHolder.money += 100;
+        MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
+        deathParticles.transform.position = this.transform.position;
+        Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }
