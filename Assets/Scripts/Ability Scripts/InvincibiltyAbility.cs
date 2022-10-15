@@ -2,15 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SlowAbility : MonoBehaviour
+public class InvincibiltyAbility : MonoBehaviour
 {
-    private float slowAmount = 0.25f;
-    private float activeTimer = 10f;
-    private float cooldownTimer = 15f;
+    private float activeTimer = 5f;
+    private float cooldownTimer = 10f;
     private State state;
     [SerializeField] private Button abilityButton;
     private bool clicked;
     [SerializeField] private TextMeshProUGUI abilityText;
+    private GameObject pc;
     enum State
     {
         OnCooldown, ReadyToActivate, InProgress
@@ -18,9 +18,10 @@ public class SlowAbility : MonoBehaviour
 
     private void Awake()
     {
+        pc = GameObject.FindWithTag("Player");
         state = State.ReadyToActivate;
         clicked = false;
-        if ( GameDataHolder.slowAbilityPurchased == false)
+        if ( GameDataHolder.invincibilityAbilityPurchased == false)
         {
             abilityButton.enabled = false;
             abilityButton.GetComponent<Image>().color = Color.gray;
@@ -38,8 +39,8 @@ public class SlowAbility : MonoBehaviour
 
     private void Activate()
     {
-        Zombie.speed = slowAmount;
-        Flyer.speed = slowAmount;
+        pc.GetComponent<PlayerController>().movementSpeed = 7.5f;
+        pc.GetComponent<PlayerController>().invincible = true;
     }
 
     private void Update()
@@ -47,10 +48,10 @@ public class SlowAbility : MonoBehaviour
         switch (state)
         {
             case State.ReadyToActivate:
-                abilityText.text = "Slow Ready";
-                cooldownTimer = 15f;
+                abilityText.text = "Invincibility Ready";
                 abilityButton.enabled = true;
                 abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
+                cooldownTimer = 10f;
                 if (clicked)
                 {
                     Activate();
@@ -65,20 +66,20 @@ public class SlowAbility : MonoBehaviour
                 abilityButton.GetComponent<Image>().color = Color.gray;
                 if (activeTimer < 0)
                 {
-                    Zombie.speed = 1.5f;
-                    Flyer.speed = 3.0f;
+                    pc.GetComponent<PlayerController>().movementSpeed = 5f;
+                    pc.GetComponent<PlayerController>().invincible = false;
                     state = State.OnCooldown;
                 }
             break;
 
             case State.OnCooldown:
                 cooldownTimer -= Time.deltaTime;
-                abilityText.text = "On Cooldown " + cooldownTimer.ToString("n0");
                 abilityButton.enabled = false;
+                abilityText.text = "On Cooldown " + cooldownTimer.ToString("n0");
                 abilityButton.GetComponent<Image>().color = Color.gray;
                 if (cooldownTimer < 0)
                 {
-                    activeTimer = 10f;
+                    activeTimer = 5f;
                     clicked = false;
                     state = State.ReadyToActivate;
                 }

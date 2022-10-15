@@ -39,9 +39,13 @@ public class Zombie : MonoBehaviour
         {
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
-            if(player != null)
+            if(player != null && !player.invincible)
             {
                 player.PlayerDeath();
+            }
+            else
+            {
+                Death();
             }
         }
         if (other.gameObject.tag == "Pistol")
@@ -51,12 +55,17 @@ public class Zombie : MonoBehaviour
             
             if (health <= 0)
             {
-                GameDataHolder.money += 250;
-                MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
-                deathParticles.transform.position = this.transform.position;
-                Instantiate(deathParticles, this.transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
+                Death();
             }
         }
+    }
+
+    private void Death()
+    {
+        GameDataHolder.money += 250;
+        MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
+        deathParticles.transform.position = this.transform.position;
+        Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }
