@@ -59,7 +59,7 @@ public class Flyer : MonoBehaviour
 
     private void Diving()
     {
-        rb.transform.position = Vector2.Lerp(this.transform.position, player.transform.position, Time.deltaTime * speed);
+        rb.transform.position = Vector2.Lerp(this.transform.position, player.transform.position, Time.deltaTime * 3f);
 
         float distanceToPlayer = Vector2.Distance(player.transform.position, this.transform.position);
         if (distanceToPlayer > 7)

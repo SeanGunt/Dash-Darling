@@ -2089,7 +2089,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2596,7 +2596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -671, y: -5.300005}
+  m_AnchoredPosition: {x: 634, y: -5.300005}
   m_SizeDelta: {x: 180, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &684121446
@@ -5635,7 +5635,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -870, y: -5.300005}
+  m_AnchoredPosition: {x: 435, y: -5.300005}
   m_SizeDelta: {x: 180, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1475000346
@@ -8063,8 +8063,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PostProcessing
       objectReference: {fileID: 0}
-    - target: {fileID: 7550337095455591573, guid: a5316dcc41a7ab841b86bc5fe2e15754, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 7550337095455591575, guid: a5316dcc41a7ab841b86bc5fe2e15754, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8104,14 +8104,6 @@ PrefabInstance:
       propertyPath: pistolMagazineText
       value: 
       objectReference: {fileID: 148142917}
-    - target: {fileID: 1244690693, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2150087988725870162, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5948647054004557371, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
       propertyPath: moneyUI
       value: 

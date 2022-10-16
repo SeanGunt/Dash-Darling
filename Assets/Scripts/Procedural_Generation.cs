@@ -11,6 +11,7 @@ public class Procedural_Generation : MonoBehaviour
     [SerializeField] Transform generationPoint, destructionPoint;
     private float zombieTimer = 5f, backgroundTimer, flyerTimer = 10f, difficulty;
     private int randomOptionBG, randomOptionPL;
+    private bool maxDifficultyReached;
 
     void Awake()
     {
@@ -29,7 +30,11 @@ public class Procedural_Generation : MonoBehaviour
         {
             SpawnFlyer();
         }
-        difficulty += 0.025f * Time.deltaTime;
+        if (difficulty >= 0 && difficulty <= 1.3f)
+        {
+            difficulty += 0.025f * Time.deltaTime;
+        }
+        Debug.Log(difficulty);
         SpawnEnvironment();
     }
     void SpawnEnvironment()
