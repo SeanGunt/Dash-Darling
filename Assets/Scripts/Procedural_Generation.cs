@@ -34,7 +34,6 @@ public class Procedural_Generation : MonoBehaviour
         {
             difficulty += 0.025f * Time.deltaTime;
         }
-        Debug.Log(difficulty);
         SpawnEnvironment();
     }
     void SpawnEnvironment()

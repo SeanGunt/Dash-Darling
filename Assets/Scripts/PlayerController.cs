@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip fireSound, reloadSound, deathSound;
     private bool soundPlayed = false, timeAdded;
     public bool invincible;
+    private Vector3 reticleStartScale;
     private Color reticleStartColor = new Color(0,0,1,1);
     private Color reticleMiddleColor = new Color(1,0.5f,0,1);
     private Color reticleEndColor = new Color(1,0,0,1);
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        reticleStartScale = reticle.transform.localScale;
         timeAdded = false;
         reticleRenderer = reticle.GetComponent<SpriteRenderer>();
         Cursor.visible = false;
@@ -54,14 +56,12 @@ public class PlayerController : MonoBehaviour
                     PistolShoot();
                     timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
                 }
-                Debug.Log(reticle.activeInHierarchy);
             break;
 
             case State.dead:
                 PlayerDeath();
             break;
         }
-            
     }
 
     private void Scroll()
@@ -92,6 +92,8 @@ public class PlayerController : MonoBehaviour
 
             PlaySound(fireSound);
 
+            Vector3 afterShotScale = new Vector3(0.05f,0.05f,1);
+            reticle.transform.localScale += afterShotScale;
         }
     }
 
@@ -99,11 +101,6 @@ public class PlayerController : MonoBehaviour
     {
         if (currentPistolMagazine == 0)
         {
-            if(!soundPlayed)
-            {
-                PlaySound(reloadSound);
-                soundPlayed = true;
-            }
             reticleRenderer.color = Color.Lerp(reticleStartColor, reticleEndColor, pistolReloadTime);
             pistolReloadTime -= Time.deltaTime;
             if (pistolReloadTime <= 0)
@@ -111,7 +108,7 @@ public class PlayerController : MonoBehaviour
                 currentPistolMagazine = GameDataHolder.pistolMagazine;
                     pistolMagazineText.text = currentPistolMagazine.ToString();
                         pistolReloadTime = GameDataHolder.pistolReloadTime;
-                        soundPlayed = false;   
+                        PlaySound(reloadSound);  
             }
     
         }
@@ -161,6 +158,12 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 mouseCursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         reticle.transform.position = mouseCursorPos;
+
+        if (reticle.transform.localScale.x > reticleStartScale.x)
+        {
+            reticle.transform.localScale = Vector3.Lerp(reticle.transform.localScale, reticleStartScale, 10f * Time.deltaTime);
+        }
+
         if (currentPistolMagazine == GameDataHolder.pistolMagazine)
         {
             reticleRenderer.color = reticleStartColor;
