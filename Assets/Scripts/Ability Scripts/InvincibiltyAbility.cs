@@ -13,23 +13,24 @@ public class InvincibiltyAbility : MonoBehaviour
     private GameObject pc;
     enum State
     {
-        OnCooldown, ReadyToActivate, InProgress
+        OnCooldown, ReadyToActivate, InProgress, NotPurchased
     }
 
     private void Awake()
     {
         pc = GameObject.FindWithTag("Player");
-        state = State.ReadyToActivate;
         clicked = false;
         if ( GameDataHolder.invincibilityAbilityPurchased == false)
         {
             abilityButton.enabled = false;
             abilityButton.GetComponent<Image>().color = Color.gray;
+            state = State.NotPurchased;
         }
         else
         {
             abilityButton.enabled = true;
             abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
+            state = State.ReadyToActivate;
         }
     }
     public void Click()
@@ -47,6 +48,9 @@ public class InvincibiltyAbility : MonoBehaviour
     {
         switch (state)
         {
+            case State.NotPurchased:
+
+            break;
             case State.ReadyToActivate:
                 abilityText.text = "Invincibility Ready";
                 abilityButton.enabled = true;
