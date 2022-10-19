@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject projectile, gameOverObj, reticle;
     [SerializeField] GameObject[] muzzleFlashes;
     [SerializeField] TextMeshProUGUI pistolMagazineText, timeText, deathTimeText;
-    private int randomOption, currentPistolMagazine;
+    [HideInInspector] public int randomOption, currentPistolMagazine;
     private float timeTillNextAttack, pistolReloadTime;
     [SerializeField] private float time;
     private SpriteRenderer reticleRenderer;
@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour
     private bool soundPlayed = false, timeAdded;
     public bool invincible;
     private Vector3 reticleStartScale;
-    private Color reticleStartColor = new Color(0,0,1,1);
-    private Color reticleMiddleColor = new Color(1,0.5f,0,1);
-    private Color reticleEndColor = new Color(1,0,0,1);
+    private Color reticleStartColor = new Color(0,1,0,0.8f);
+    private Color reticleMiddleColor = new Color(1,0.5f,0,0.8f);
+    private Color reticleEndColor = new Color(1,0,0,0.8f);
     private State state;
     enum State
     {

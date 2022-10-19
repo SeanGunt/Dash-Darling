@@ -730,7 +730,7 @@ MonoBehaviour:
   playerSounds: {fileID: 7303805526208689136}
   bgmSource: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 4465ad6d4713e924bb5bc74b23082369, type: 3}
-  reloadSound: {fileID: 8300000, guid: b1b4227c38dace648b4382133c9d8e4f, type: 3}
+  reloadSound: {fileID: 8300000, guid: fb18e71556442e244a5c9a7807c1410a, type: 3}
   deathSound: {fileID: 8300000, guid: 9b96c81c2f478bc49b2227d499981c26, type: 3}
   invincible: 0
 --- !u!82 &7303805526208689136

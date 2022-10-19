@@ -1,31 +1,7 @@
 fileFormatVersion: 2
-guid: fedb21667a2599540ac7448355883976
+guid: e818e2f25405e8645984580d87037348
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -6707778565330116482
-    second: batenemyspritesheet_0
-  - first:
-      213: 3231329457834983580
-    second: batenemyspritesheet_1
-  - first:
-      213: -7051389823715782152
-    second: batenemyspritesheet_2
-  - first:
-      213: -1061782278810234248
-    second: batenemyspritesheet_
-  - first:
-      213: 8265041239431399092
-    second: batenemyspritesheet_3
-  - first:
-      213: 7050532134549660771
-    second: batenemyspritesheet_4
-  - first:
-      213: -1046862267545731893
-    second: batenemyspritesheet_
-  - first:
-      213: -8349014388348318422
-    second: batenemyspritesheet_7
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,18 +89,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -140,12 +104,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: batenemyspritesheet_0
+      name: batenemyspritesheet2_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 250
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -154,19 +118,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e70e4852fee29e2a0800000000000000
-      internalID: -6707778565330116482
+      spriteID: 443f22ce0ff39d54d80ee334912bfb92
+      internalID: -1217980036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: batenemyspritesheet_1
+      name: batenemyspritesheet2_1
       rect:
         serializedVersion: 2
-        x: 327
+        x: 300
         y: 0
-        width: 250
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -175,19 +139,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c908286850df7dc20800000000000000
-      internalID: 3231329457834983580
+      spriteID: 7d5d9566f6c34b14da7b72532dbaa6f8
+      internalID: -2039655529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: batenemyspritesheet_2
+      name: batenemyspritesheet2_2
       rect:
         serializedVersion: 2
-        x: 633
+        x: 600
         y: 0
-        width: 250
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -196,19 +160,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f1dd90b05e642e90800000000000000
-      internalID: -7051389823715782152
+      spriteID: 51354351e1fd68541b297259f74b39ce
+      internalID: -239226955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: batenemyspritesheet_3
+      name: batenemyspritesheet2_3
       rect:
         serializedVersion: 2
-        x: 931
+        x: 900
         y: 0
-        width: 250
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -217,19 +181,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b6434a973353b270800000000000000
-      internalID: 8265041239431399092
+      spriteID: 25014ad4b33b5454695d5682139faaa8
+      internalID: 51751166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: batenemyspritesheet_4
+      name: batenemyspritesheet2_4
       rect:
         serializedVersion: 2
-        x: 1222
+        x: 1200
         y: 0
-        width: 250
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -238,8 +202,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3642f4dfe9588d160800000000000000
-      internalID: 7050532134549660771
+      spriteID: 855ee76d5d1fe2446b016ad62f7ebf71
+      internalID: 706406529
       vertices: []
       indices: 
       edges: []
@@ -255,11 +219,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      batenemyspritesheet_4: 7050532134549660771
-      batenemyspritesheet_0: -6707778565330116482
-      batenemyspritesheet_3: 8265041239431399092
-      batenemyspritesheet_1: 3231329457834983580
-      batenemyspritesheet_2: -7051389823715782152
+      batenemyspritesheet2_1: -2039655529
+      batenemyspritesheet2_3: 51751166
+      batenemyspritesheet2_2: -239226955
+      batenemyspritesheet2_0: -1217980036
+      batenemyspritesheet2_4: 706406529
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

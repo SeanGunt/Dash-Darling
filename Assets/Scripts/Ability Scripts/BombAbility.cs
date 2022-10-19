@@ -2,15 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SlowAbility : MonoBehaviour
+public class BombAbility : MonoBehaviour
 {
-    private float slowAmount = 0.25f;
-    private float activeTimer = 10f;
+    private float activeTimer = 3f;
     private float cooldownTimer = 15f;
     private State state;
     [SerializeField] private Button abilityButton;
     private bool clicked;
     [SerializeField] private TextMeshProUGUI abilityText;
+    private GameObject[] enemies;
     enum State
     {
         OnCooldown, ReadyToActivate, InProgress, NotPurchased
@@ -19,7 +19,7 @@ public class SlowAbility : MonoBehaviour
     private void Awake()
     {
         clicked = false;
-        if ( GameDataHolder.slowAbilityPurchased == false)
+        if ( GameDataHolder.bombAbilityPurchased == false)
         {
             abilityButton.enabled = false;
             abilityButton.GetComponent<Image>().color = Color.gray;
@@ -39,9 +39,9 @@ public class SlowAbility : MonoBehaviour
 
     private void Activate()
     {
-        Zombie.speed = slowAmount;
-        HellBat.speed = slowAmount;
-        Bat.speed = slowAmount;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies)
+        GameObject.Destroy(enemy);
     }
 
     private void Update()
@@ -52,8 +52,8 @@ public class SlowAbility : MonoBehaviour
 
             break;
             case State.ReadyToActivate:
-                abilityText.text = "Slow Ready";
-                cooldownTimer = 15f;
+                abilityText.text = "Bomb Ready";
+                cooldownTimer = 20f;
                 abilityButton.enabled = true;
                 abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
                 if (clicked)
@@ -70,9 +70,6 @@ public class SlowAbility : MonoBehaviour
                 abilityButton.GetComponent<Image>().color = Color.gray;
                 if (activeTimer < 0)
                 {
-                    Zombie.speed = 1.5f;
-                    Bat.speed = 3.0f;
-                    HellBat.speed = 4.0f;
                     state = State.OnCooldown;
                 }
             break;
@@ -84,7 +81,7 @@ public class SlowAbility : MonoBehaviour
                 abilityButton.GetComponent<Image>().color = Color.gray;
                 if (cooldownTimer < 0)
                 {
-                    activeTimer = 10f;
+                    activeTimer = 3f;
                     clicked = false;
                     state = State.ReadyToActivate;
                 }

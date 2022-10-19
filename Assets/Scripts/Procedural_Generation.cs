@@ -3,19 +3,20 @@ using UnityEngine;
 public class Procedural_Generation : MonoBehaviour
 {
     [SerializeField] float width, height;
-    [SerializeField] GameObject flyingEnemy, enemy, player;
-    [SerializeField] float minWaitZombie, maxWaitZombie, minWaitFlyer, maxWaitFlyer;
+    [SerializeField] GameObject bat, hellBat, zombie, player;
+    [SerializeField] float minWaitZombie, maxWaitZombie, minWaitFlyer, maxWaitFlyer, minWaitHellBat, maxWaitHellBat;
     [SerializeField] GameObject[] platforms;
     [SerializeField] GameObject[] backgrounds;
-    [SerializeField] private GameObject targetIndicator, skyLight;
+    [SerializeField] private GameObject targetIndicator;
     [SerializeField] Transform generationPoint, destructionPoint;
-    private float zombieTimer = 5f, backgroundTimer, flyerTimer = 10f, difficulty;
+    private float zombieTimer = 5f, backgroundTimer, flyerTimer = 10f, hellBatTimer = 70f, difficulty, secondDifficulty;
     private int randomOptionBG, randomOptionPL;
     private bool maxDifficultyReached;
 
     void Awake()
     {
         difficulty = 0;
+        secondDifficulty = 0;
     }
     void Update()
     {
@@ -28,12 +29,16 @@ public class Procedural_Generation : MonoBehaviour
         flyerTimer -= Time.deltaTime;
         if (flyerTimer <= 0)
         {
-            SpawnFlyer();
+            SpawnBat();
         }
-        if (difficulty >= 0 && difficulty <= 1.3f)
+
+        hellBatTimer -= Time.deltaTime;
+        if (hellBatTimer <= 0)
         {
-            difficulty += 0.025f * Time.deltaTime;
+            SpawnHellBat();
         }
+
+        DifficultyManagement();
         SpawnEnvironment();
     }
     void SpawnEnvironment()
@@ -51,7 +56,7 @@ public class Procedural_Generation : MonoBehaviour
 
     void SpawnZombie()
     {
-        GameObject baseZombie = Instantiate(enemy, new Vector2(player.transform.position.x + 25, 3.03f), Quaternion.identity);
+        GameObject baseZombie = Instantiate(zombie, new Vector2(player.transform.position.x + 25, 3.03f), Quaternion.identity);
         Vector2 targetPosition = new Vector2(baseZombie.transform.position.x - 8.5f, baseZombie.transform.position.y);
         GameObject target = Instantiate(targetIndicator, targetPosition, Quaternion.identity);
         Destroy(target, 1.5f);
@@ -59,13 +64,36 @@ public class Procedural_Generation : MonoBehaviour
         zombieTimer = Random.Range(minWaitZombie/difficulty,maxWaitZombie/difficulty);
     }
 
-    void SpawnFlyer()
+    void SpawnBat()
     {
-        GameObject baseBat = Instantiate(flyingEnemy, new Vector2(player.transform.position.x + 25, 7.5f), Quaternion.identity);
+        GameObject baseBat = Instantiate(bat, new Vector2(player.transform.position.x + 25, 7.5f), Quaternion.identity);
         Vector2 targetPosition = new Vector2(baseBat.transform.position.x - 8.5f, baseBat.transform.position.y);
         GameObject target = Instantiate(targetIndicator, targetPosition, Quaternion.identity);
         Destroy(target, 1.5f);
 
         flyerTimer = Random.Range(minWaitFlyer/difficulty, maxWaitFlyer/difficulty);
+    }
+
+    void SpawnHellBat()
+    {
+        GameObject baseHellBat = Instantiate(hellBat, new Vector2(player.transform.position.x + 25, 7.5f), Quaternion.identity);
+        Vector2 targetPosition = new Vector2(baseHellBat.transform.position.x - 8.5f, baseHellBat.transform.position.y);
+        GameObject target = Instantiate(targetIndicator, targetPosition, Quaternion.identity);
+        Destroy(target, 1.5f);
+
+        hellBatTimer = Random.Range(minWaitHellBat/secondDifficulty, maxWaitHellBat/secondDifficulty);
+    }
+
+    void DifficultyManagement()
+    {
+        if (difficulty >= 0 && difficulty <= 1.0f)
+        {
+            difficulty += 0.025f * Time.deltaTime;
+        }
+
+        if (difficulty >= 1.0f && secondDifficulty <= 1.0f)
+        {
+            secondDifficulty += 0.025f * Time.deltaTime;
+        }
     }
 }

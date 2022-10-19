@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Flyer : MonoBehaviour
+public class Bat : MonoBehaviour
 {
     [SerializeField] public static float speed = 3.0f;
     [SerializeField] int health;

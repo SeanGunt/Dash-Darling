@@ -2,15 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SlowAbility : MonoBehaviour
+public class InfiniteAmmoAbility : MonoBehaviour
 {
-    private float slowAmount = 0.25f;
-    private float activeTimer = 10f;
-    private float cooldownTimer = 15f;
+    private float activeTimer = 5f;
+    private float cooldownTimer = 30f;
     private State state;
     [SerializeField] private Button abilityButton;
     private bool clicked;
     [SerializeField] private TextMeshProUGUI abilityText;
+    [SerializeField] private TextMeshProUGUI currentMagazineText;
+    private GameObject pc;
     enum State
     {
         OnCooldown, ReadyToActivate, InProgress, NotPurchased
@@ -18,8 +19,9 @@ public class SlowAbility : MonoBehaviour
 
     private void Awake()
     {
+        pc = GameObject.FindWithTag("Player");
         clicked = false;
-        if ( GameDataHolder.slowAbilityPurchased == false)
+        if ( GameDataHolder.infiniteAmmoPurchased == false)
         {
             abilityButton.enabled = false;
             abilityButton.GetComponent<Image>().color = Color.gray;
@@ -39,9 +41,9 @@ public class SlowAbility : MonoBehaviour
 
     private void Activate()
     {
-        Zombie.speed = slowAmount;
-        HellBat.speed = slowAmount;
-        Bat.speed = slowAmount;
+        DataPersistenceManager.instance.SaveGame();
+        pc.GetComponent<PlayerController>().currentPistolMagazine = 999;
+        currentMagazineText.text = pc.GetComponent<PlayerController>().currentPistolMagazine.ToString();
     }
 
     private void Update()
@@ -52,10 +54,10 @@ public class SlowAbility : MonoBehaviour
 
             break;
             case State.ReadyToActivate:
-                abilityText.text = "Slow Ready";
-                cooldownTimer = 15f;
+                abilityText.text = "Infinite Ammo Ready";
                 abilityButton.enabled = true;
                 abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
+                cooldownTimer = 30f;
                 if (clicked)
                 {
                     Activate();
@@ -70,21 +72,20 @@ public class SlowAbility : MonoBehaviour
                 abilityButton.GetComponent<Image>().color = Color.gray;
                 if (activeTimer < 0)
                 {
-                    Zombie.speed = 1.5f;
-                    Bat.speed = 3.0f;
-                    HellBat.speed = 4.0f;
                     state = State.OnCooldown;
+                    pc.GetComponent<PlayerController>().currentPistolMagazine = GameDataHolder.pistolMagazine;
+                    currentMagazineText.text = pc.GetComponent<PlayerController>().currentPistolMagazine.ToString();
                 }
             break;
 
             case State.OnCooldown:
                 cooldownTimer -= Time.deltaTime;
-                abilityText.text = "On Cooldown " + cooldownTimer.ToString("n0");
                 abilityButton.enabled = false;
+                abilityText.text = "On Cooldown " + cooldownTimer.ToString("n0");
                 abilityButton.GetComponent<Image>().color = Color.gray;
                 if (cooldownTimer < 0)
                 {
-                    activeTimer = 10f;
+                    activeTimer = 5f;
                     clicked = false;
                     state = State.ReadyToActivate;
                 }
