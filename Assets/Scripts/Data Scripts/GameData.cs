@@ -4,8 +4,8 @@ public class GameData
     public int pistolDamage;
     public int money;
     public bool isPistolDmgPurchasable, isPistolRoFPurchasable, isPistolAmmoPurchasable, isPistolReloadPurchasable;
-    public bool slowAbilityPurchased, invincibilityAbilityPurchased;
-    public bool isSlowAbilityPurchasable, isInvincibilityAbilityPurchasable;
+    public bool slowAbilityPurchased, invincibilityAbilityPurchased, bombAbilityPurchased, infiniteAmmoPurchased;
+    public bool isSlowAbilityPurchasable, isInvincibilityAbilityPurchasable, isBombAbilityPurchasable, isInfiniteAmmoAbilityPurchasable;
     public float pistolFireRate;
     public int pistolMagazine;
     public float pistolReloadTime;
@@ -24,8 +24,12 @@ public class GameData
 
         isSlowAbilityPurchasable = true;
         isInvincibilityAbilityPurchasable = true;
+        isBombAbilityPurchasable = true;
+        isInfiniteAmmoAbilityPurchasable = true;
 
         invincibilityAbilityPurchased = false;
         slowAbilityPurchased = false;
+        bombAbilityPurchased = false;
+        infiniteAmmoPurchased = false;
     }
 }

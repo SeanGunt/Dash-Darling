@@ -9,6 +9,8 @@ public class GameDataHolder : MonoBehaviour, IDataPersistence
     public static float pistolReloadTime;
     public static bool slowAbilityPurchased;
     public static bool invincibilityAbilityPurchased;
+    public static bool bombAbilityPurchased;
+    public static bool infiniteAmmoPurchased;
 
     public void LoadData(GameData data)
     {
@@ -19,6 +21,8 @@ public class GameDataHolder : MonoBehaviour, IDataPersistence
         pistolReloadTime = data.pistolReloadTime;
         slowAbilityPurchased = data.slowAbilityPurchased;
         invincibilityAbilityPurchased = data.invincibilityAbilityPurchased;
+        bombAbilityPurchased = data.bombAbilityPurchased;
+        infiniteAmmoPurchased = data.infiniteAmmoPurchased;
     }
 
     public void SaveData(GameData data)
@@ -30,5 +34,7 @@ public class GameDataHolder : MonoBehaviour, IDataPersistence
         data.pistolReloadTime = pistolReloadTime;
         data.slowAbilityPurchased = slowAbilityPurchased;
         data.invincibilityAbilityPurchased = invincibilityAbilityPurchased;
+        data.bombAbilityPurchased = bombAbilityPurchased;
+        data.infiniteAmmoPurchased = infiniteAmmoPurchased;
     }
 }
