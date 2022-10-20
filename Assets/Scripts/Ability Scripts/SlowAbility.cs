@@ -5,12 +5,14 @@ using TMPro;
 public class SlowAbility : MonoBehaviour
 {
     private float slowAmount = 0.25f;
-    private float activeTimer = 10f;
-    private float cooldownTimer = 15f;
+    private float activeTimer = 10f, startingActiveTimer;
+    private float cooldownTimer = 15f, startingCooldownTimer;
     private State state;
     [SerializeField] private Button abilityButton;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioClip;
+    private bool hasBeenPlayed;
     private bool clicked;
-    [SerializeField] private TextMeshProUGUI abilityText;
     enum State
     {
         OnCooldown, ReadyToActivate, InProgress, NotPurchased
@@ -18,6 +20,8 @@ public class SlowAbility : MonoBehaviour
 
     private void Awake()
     {
+        startingActiveTimer = activeTimer;
+        startingCooldownTimer = cooldownTimer;
         clicked = false;
         if ( GameDataHolder.slowAbilityPurchased == false)
         {
@@ -28,7 +32,6 @@ public class SlowAbility : MonoBehaviour
         else
         {
             abilityButton.enabled = true;
-            abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
             state = State.ReadyToActivate;
         }
     }
@@ -42,6 +45,12 @@ public class SlowAbility : MonoBehaviour
         Zombie.speed = slowAmount;
         HellBat.speed = slowAmount;
         Bat.speed = slowAmount;
+        HatZombie.speed = slowAmount;
+        if (!hasBeenPlayed)
+        {
+            audioSource.PlayOneShot(audioClip);
+            hasBeenPlayed = true;
+        }
     }
 
     private void Update()
@@ -52,40 +61,45 @@ public class SlowAbility : MonoBehaviour
 
             break;
             case State.ReadyToActivate:
-                abilityText.text = "Slow Ready";
-                cooldownTimer = 15f;
+                cooldownTimer = startingCooldownTimer;
                 abilityButton.enabled = true;
-                abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
+                abilityButton.GetComponent<Image>().color = Color.green;
+                Zombie.speed = 1.5f;
+                Bat.speed = 3.0f;
+                HellBat.speed = 4.0f;
+                HatZombie.speed = 2.0f;
                 if (clicked)
                 {
                     Activate();
                     state = State.InProgress;
+                    abilityButton.GetComponent<Image>().color = Color.blue;
                 }
             break;
 
             case State.InProgress:
                 activeTimer -= Time.deltaTime;
-                abilityText.text = "In Progress " + activeTimer.ToString("n0");
                 abilityButton.enabled = false;
-                abilityButton.GetComponent<Image>().color = Color.gray;
+                abilityButton.GetComponent<Image>().fillAmount -= 1f/startingActiveTimer * Time.deltaTime;
                 if (activeTimer < 0)
                 {
                     Zombie.speed = 1.5f;
                     Bat.speed = 3.0f;
                     HellBat.speed = 4.0f;
+                    HatZombie.speed = 2.0f;
                     state = State.OnCooldown;
+                    abilityButton.GetComponent<Image>().color = Color.red;
                 }
             break;
 
             case State.OnCooldown:
                 cooldownTimer -= Time.deltaTime;
-                abilityText.text = "On Cooldown " + cooldownTimer.ToString("n0");
                 abilityButton.enabled = false;
-                abilityButton.GetComponent<Image>().color = Color.gray;
+                abilityButton.GetComponent<Image>().fillAmount += 1f/startingCooldownTimer * Time.deltaTime;
                 if (cooldownTimer < 0)
                 {
-                    activeTimer = 10f;
+                    activeTimer = startingActiveTimer;
                     clicked = false;
+                    hasBeenPlayed = false;
                     state = State.ReadyToActivate;
                 }
             break;

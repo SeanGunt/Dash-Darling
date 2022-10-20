@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private Color reticleStartColor = new Color(0,1,0,0.8f);
     private Color reticleMiddleColor = new Color(1,0.5f,0,0.8f);
     private Color reticleEndColor = new Color(1,0,0,0.8f);
+    [SerializeField] private Image reticleOutline;
     private State state;
     enum State
     {
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        reticle.SetActive(true);
         reticleStartScale = reticle.transform.localScale;
         timeAdded = false;
         reticleRenderer = reticle.GetComponent<SpriteRenderer>();
@@ -94,6 +97,7 @@ public class PlayerController : MonoBehaviour
 
             Vector3 afterShotScale = new Vector3(0.05f,0.05f,1);
             reticle.transform.localScale += afterShotScale;
+            reticleOutline.fillAmount -= 1f/GameDataHolder.pistolMagazine;
         }
     }
 
@@ -102,6 +106,7 @@ public class PlayerController : MonoBehaviour
         if (currentPistolMagazine == 0)
         {
             reticleRenderer.color = Color.Lerp(reticleStartColor, reticleEndColor, pistolReloadTime);
+            reticleOutline.fillAmount += 1f/GameDataHolder.pistolReloadTime * Time.deltaTime;
             pistolReloadTime -= Time.deltaTime;
             if (pistolReloadTime <= 0)
             {
@@ -128,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDeath()
     {
-
+        reticle.SetActive(false);
         Debug.Log("Player is Dead");
         gameOverObj.SetActive(true);
         Time.timeScale = 0;
@@ -176,7 +181,6 @@ public class PlayerController : MonoBehaviour
         {
             reticleRenderer.color = reticleEndColor;
         }
-        
     }
 
     void OnCollisionEnter2D(Collision2D other)

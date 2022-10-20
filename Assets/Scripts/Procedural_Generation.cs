@@ -3,13 +3,14 @@ using UnityEngine;
 public class Procedural_Generation : MonoBehaviour
 {
     [SerializeField] float width, height;
-    [SerializeField] GameObject bat, hellBat, zombie, player;
-    [SerializeField] float minWaitZombie, maxWaitZombie, minWaitFlyer, maxWaitFlyer, minWaitHellBat, maxWaitHellBat;
+    [SerializeField] GameObject bat, hellBat, zombie, helmetZombie, player;
+    [SerializeField] float minWaitZombie, maxWaitZombie, minWaitFlyer, maxWaitFlyer, minWaitHellBat, maxWaitHellBat, waitHelmetZombie;
     [SerializeField] GameObject[] platforms;
     [SerializeField] GameObject[] backgrounds;
     [SerializeField] private GameObject targetIndicator;
     [SerializeField] Transform generationPoint, destructionPoint;
-    private float zombieTimer = 5f, backgroundTimer, flyerTimer = 10f, hellBatTimer = 70f, difficulty, secondDifficulty;
+    private float zombieTimer = 5f, backgroundTimer, flyerTimer = 10f, hellBatTimer = 70f, helmetZombieTimer = 50f, difficulty, secondDifficulty,
+    randomSpawnHeight;
     private int randomOptionBG, randomOptionPL;
     private bool maxDifficultyReached;
 
@@ -38,6 +39,12 @@ public class Procedural_Generation : MonoBehaviour
             SpawnHellBat();
         }
 
+        helmetZombieTimer -= Time.deltaTime;
+        if (helmetZombieTimer <= 0)
+        {
+            SpawnHelmetZombie();
+        }
+
         DifficultyManagement();
         SpawnEnvironment();
     }
@@ -47,7 +54,7 @@ public class Procedural_Generation : MonoBehaviour
         {
             randomOptionPL = Random.Range(0, platforms.Length);
             transform.position = new Vector3(transform.position.x + width, transform.position.y, transform.position.z);
-            Instantiate(platforms[randomOptionPL], new Vector3(transform.position.x, 5, transform.position.z), Quaternion.identity);
+            Instantiate(platforms[randomOptionPL], new Vector3(transform.position.x, 5f, transform.position.z), Quaternion.identity);
 
             randomOptionBG = Random.Range(0, backgrounds.Length);
             Instantiate(backgrounds[randomOptionBG], new Vector3(transform.position.x, height, transform.position.z), Quaternion.identity);
@@ -66,7 +73,8 @@ public class Procedural_Generation : MonoBehaviour
 
     void SpawnBat()
     {
-        GameObject baseBat = Instantiate(bat, new Vector2(player.transform.position.x + 25, 7.5f), Quaternion.identity);
+        randomSpawnHeight = Random.Range(6.0f, 8.0f);
+        GameObject baseBat = Instantiate(bat, new Vector2(player.transform.position.x + 25, randomSpawnHeight), Quaternion.identity);
         Vector2 targetPosition = new Vector2(baseBat.transform.position.x - 8.5f, baseBat.transform.position.y);
         GameObject target = Instantiate(targetIndicator, targetPosition, Quaternion.identity);
         Destroy(target, 1.5f);
@@ -76,12 +84,23 @@ public class Procedural_Generation : MonoBehaviour
 
     void SpawnHellBat()
     {
-        GameObject baseHellBat = Instantiate(hellBat, new Vector2(player.transform.position.x + 25, 7.5f), Quaternion.identity);
+        randomSpawnHeight = Random.Range(6.0f, 8.0f);
+        GameObject baseHellBat = Instantiate(hellBat, new Vector2(player.transform.position.x + 25, randomSpawnHeight), Quaternion.identity);
         Vector2 targetPosition = new Vector2(baseHellBat.transform.position.x - 8.5f, baseHellBat.transform.position.y);
         GameObject target = Instantiate(targetIndicator, targetPosition, Quaternion.identity);
         Destroy(target, 1.5f);
 
         hellBatTimer = Random.Range(minWaitHellBat/secondDifficulty, maxWaitHellBat/secondDifficulty);
+    }
+
+    void SpawnHelmetZombie()
+    {
+        GameObject baseHelmetZombie = Instantiate(helmetZombie, new Vector2(player.transform.position.x + 25, 3.03f), Quaternion.identity);
+        Vector2 targetPosition = new Vector2(baseHelmetZombie.transform.position.x - 8.5f, baseHelmetZombie.transform.position.y);
+        GameObject target = Instantiate(targetIndicator, targetPosition, Quaternion.identity);
+        Destroy(target, 1.5f);
+
+        helmetZombieTimer = waitHelmetZombie;
     }
 
     void DifficultyManagement()

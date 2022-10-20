@@ -4,13 +4,15 @@ using TMPro;
 
 public class InvincibiltyAbility : MonoBehaviour
 {
-    private float activeTimer = 5f;
-    private float cooldownTimer = 10f;
+    private float activeTimer = 5f, startingActiveTimer;
+    private float cooldownTimer = 10f, startingCooldownTimer;
     private State state;
     [SerializeField] private Button abilityButton;
     private bool clicked;
-    [SerializeField] private TextMeshProUGUI abilityText;
     private GameObject pc;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioClip;
+    private bool hasBeenPlayed;
     enum State
     {
         OnCooldown, ReadyToActivate, InProgress, NotPurchased
@@ -18,6 +20,8 @@ public class InvincibiltyAbility : MonoBehaviour
 
     private void Awake()
     {
+        startingActiveTimer = activeTimer;
+        startingCooldownTimer = cooldownTimer;
         pc = GameObject.FindWithTag("Player");
         clicked = false;
         if ( GameDataHolder.invincibilityAbilityPurchased == false)
@@ -29,7 +33,6 @@ public class InvincibiltyAbility : MonoBehaviour
         else
         {
             abilityButton.enabled = true;
-            abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
             state = State.ReadyToActivate;
         }
     }
@@ -42,6 +45,11 @@ public class InvincibiltyAbility : MonoBehaviour
     {
         pc.GetComponent<PlayerController>().movementSpeed = 7.5f;
         pc.GetComponent<PlayerController>().invincible = true;
+        if (!hasBeenPlayed)
+        {
+            audioSource.PlayOneShot(audioClip);
+            hasBeenPlayed = true;
+        }
     }
 
     private void Update()
@@ -52,22 +60,21 @@ public class InvincibiltyAbility : MonoBehaviour
 
             break;
             case State.ReadyToActivate:
-                abilityText.text = "Invincibility Ready";
                 abilityButton.enabled = true;
-                abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
-                cooldownTimer = 10f;
+                abilityButton.GetComponent<Image>().color = Color.green;
+                cooldownTimer = startingCooldownTimer;
                 if (clicked)
                 {
                     Activate();
                     state = State.InProgress;
+                    abilityButton.GetComponent<Image>().color = Color.blue;
                 }
             break;
 
             case State.InProgress:
                 activeTimer -= Time.deltaTime;
-                abilityText.text = "In Progress " + activeTimer.ToString("n0");
                 abilityButton.enabled = false;
-                abilityButton.GetComponent<Image>().color = Color.gray;
+                abilityButton.GetComponent<Image>().fillAmount -= 1f/startingActiveTimer * Time.deltaTime;
                 if (activeTimer < 0)
                 {
                     pc.GetComponent<PlayerController>().movementSpeed = 5f;
@@ -79,12 +86,13 @@ public class InvincibiltyAbility : MonoBehaviour
             case State.OnCooldown:
                 cooldownTimer -= Time.deltaTime;
                 abilityButton.enabled = false;
-                abilityText.text = "On Cooldown " + cooldownTimer.ToString("n0");
-                abilityButton.GetComponent<Image>().color = Color.gray;
+                abilityButton.GetComponent<Image>().color = Color.red;
+                abilityButton.GetComponent<Image>().fillAmount += 1f/startingCooldownTimer * Time.deltaTime;
                 if (cooldownTimer < 0)
                 {
-                    activeTimer = 5f;
+                    activeTimer = startingActiveTimer;
                     clicked = false;
+                    hasBeenPlayed = false;
                     state = State.ReadyToActivate;
                 }
             break;

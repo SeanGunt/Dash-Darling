@@ -115,7 +115,7 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
             pistolReloadButton.interactable = false;
             GameDataHolder.money -= 10000;
             MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
-            GameDataHolder.pistolReloadTime -= 1.0f;
+            GameDataHolder.pistolReloadTime -= 0.5f;
             Debug.Log("Pistol Reload Time is now " + GameDataHolder.pistolReloadTime);
         }
     }
