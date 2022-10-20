@@ -726,6 +726,8 @@ MonoBehaviour:
   pistolMagazineText: {fileID: 0}
   timeText: {fileID: 0}
   deathTimeText: {fileID: 0}
+  randomOption: 0
+  currentPistolMagazine: 0
   time: 0
   playerSounds: {fileID: 7303805526208689136}
   bgmSource: {fileID: 0}
@@ -733,6 +735,7 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: fb18e71556442e244a5c9a7807c1410a, type: 3}
   deathSound: {fileID: 8300000, guid: 9b96c81c2f478bc49b2227d499981c26, type: 3}
   invincible: 0
+  reticleOutline: {fileID: 0}
 --- !u!82 &7303805526208689136
 AudioSource:
   m_ObjectHideFlags: 0

@@ -4,13 +4,15 @@ using TMPro;
 
 public class BombAbility : MonoBehaviour
 {
-    private float activeTimer = 3f;
-    private float cooldownTimer = 15f;
+    private float activeTimer = 1f, startingActiveTimer;
+    private float cooldownTimer = 15f, startingCooldownTimer;
     private State state;
     [SerializeField] private Button abilityButton;
     private bool clicked;
-    [SerializeField] private TextMeshProUGUI abilityText;
     private GameObject[] enemies;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioClip;
+    private bool hasBeenPlayed;
     enum State
     {
         OnCooldown, ReadyToActivate, InProgress, NotPurchased
@@ -18,6 +20,8 @@ public class BombAbility : MonoBehaviour
 
     private void Awake()
     {
+        startingActiveTimer = activeTimer;
+        startingCooldownTimer = cooldownTimer;
         clicked = false;
         if ( GameDataHolder.bombAbilityPurchased == false)
         {
@@ -28,7 +32,6 @@ public class BombAbility : MonoBehaviour
         else
         {
             abilityButton.enabled = true;
-            abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
             state = State.ReadyToActivate;
         }
     }
@@ -42,6 +45,11 @@ public class BombAbility : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemies)
         GameObject.Destroy(enemy);
+        if (!hasBeenPlayed)
+        {
+            audioSource.PlayOneShot(audioClip);
+            hasBeenPlayed = true;
+        }
     }
 
     private void Update()
@@ -52,22 +60,21 @@ public class BombAbility : MonoBehaviour
 
             break;
             case State.ReadyToActivate:
-                abilityText.text = "Bomb Ready";
-                cooldownTimer = 20f;
+                cooldownTimer = startingCooldownTimer;
                 abilityButton.enabled = true;
-                abilityButton.GetComponent<Image>().color = new Color(0.0f,0.8f,0.0f,0.6f);
+                abilityButton.GetComponent<Image>().color = Color.green;
                 if (clicked)
                 {
                     Activate();
                     state = State.InProgress;
+                    abilityButton.GetComponent<Image>().color = Color.blue;
                 }
             break;
 
             case State.InProgress:
                 activeTimer -= Time.deltaTime;
-                abilityText.text = "In Progress " + activeTimer.ToString("n0");
                 abilityButton.enabled = false;
-                abilityButton.GetComponent<Image>().color = Color.gray;
+                abilityButton.GetComponent<Image>().fillAmount -= 1f/startingActiveTimer * Time.deltaTime;
                 if (activeTimer < 0)
                 {
                     state = State.OnCooldown;
@@ -76,13 +83,14 @@ public class BombAbility : MonoBehaviour
 
             case State.OnCooldown:
                 cooldownTimer -= Time.deltaTime;
-                abilityText.text = "On Cooldown " + cooldownTimer.ToString("n0");
                 abilityButton.enabled = false;
-                abilityButton.GetComponent<Image>().color = Color.gray;
+                abilityButton.GetComponent<Image>().color = Color.red;
+                abilityButton.GetComponent<Image>().fillAmount += 1f/startingCooldownTimer * Time.deltaTime;
                 if (cooldownTimer < 0)
                 {
-                    activeTimer = 3f;
+                    activeTimer = startingActiveTimer;
                     clicked = false;
+                    hasBeenPlayed = false;
                     state = State.ReadyToActivate;
                 }
             break;
