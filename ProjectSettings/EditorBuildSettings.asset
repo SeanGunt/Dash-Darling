@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InfiniteLevel.unity
     guid: c6ec2f1890f9b274cb30e69e8802ad59
+  - enabled: 1
+    path: Assets/Scenes/DefenceMode.unity
+    guid: bfae690c1350d9c4ab9d90f818496154
   m_configObjects: {}

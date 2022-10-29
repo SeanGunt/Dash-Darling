@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Bat : MonoBehaviour
+public class HellBat : MonoBehaviour
 {
-    [SerializeField] public static float speed = 3.0f;
+    [SerializeField] public static float speed = 4.0f;
     [SerializeField] int health;
     [SerializeField] RectTransform healthBar;
     private GameObject player;
@@ -93,11 +95,23 @@ public class Bat : MonoBehaviour
                 Death();
             }
         }
+
+        if (other.gameObject.tag == "Turret")
+        {
+            health = health - GameDataHolder.turretDamage;
+            healthBar.sizeDelta = healthBar.sizeDelta - new Vector2(GameDataHolder.turretDamage,0);
+            if (health <= 0)
+            {
+                deathParticles.transform.position = this.transform.position;
+                Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     private void Death()
     {
-        GameDataHolder.money += 100;
+        GameDataHolder.money += 200;
         MoneyHolderUI.instance.moneyUI.text = GameDataHolder.money.ToString();
         deathParticles.transform.position = this.transform.position;
         Instantiate(deathParticles, this.transform.position, Quaternion.identity);

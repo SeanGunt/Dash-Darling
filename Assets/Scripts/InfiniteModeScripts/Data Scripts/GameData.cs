@@ -1,7 +1,7 @@
 [System.Serializable]
 public class GameData
 {
-    public int pistolDamage;
+    public int pistolDamage, turretDamage;
     public int money;
     public bool isPistolDmgPurchasable, isPistolRoFPurchasable, isPistolAmmoPurchasable, isPistolReloadPurchasable;
     public bool slowAbilityPurchased, invincibilityAbilityPurchased, bombAbilityPurchased, infiniteAmmoPurchased;
@@ -16,6 +16,8 @@ public class GameData
         pistolFireRate = 4f;
         pistolMagazine = 16;
         pistolReloadTime = 2f;
+
+        turretDamage = 5;
 
         isPistolDmgPurchasable = true;
         isPistolRoFPurchasable = true;

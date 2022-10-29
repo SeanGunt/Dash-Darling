@@ -58,6 +58,18 @@ public class HatZombie : MonoBehaviour
                 Death();
             }
         }
+
+        if (other.gameObject.tag == "Turret")
+        {
+            health = health - GameDataHolder.turretDamage;
+            healthBar.sizeDelta = healthBar.sizeDelta - new Vector2(GameDataHolder.turretDamage/2,0);
+            if (health <= 0)
+            {
+                deathParticles.transform.position = this.transform.position;
+                Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     private void Death()

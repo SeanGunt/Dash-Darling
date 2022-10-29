@@ -54,11 +54,7 @@ public class PlayerController : MonoBehaviour
                 Scroll();
                 GunLook();
                 PistolReload();
-                if (Time.time >= timeTillNextAttack && currentPistolMagazine > 0 && reticle.activeInHierarchy == true)
-                {
-                    PistolShoot();
-                    timeTillNextAttack = Time.time + 1f/GameDataHolder.pistolFireRate;
-                }
+                PistolShoot();
             break;
 
             case State.dead:
@@ -83,8 +79,10 @@ public class PlayerController : MonoBehaviour
 
     private void PistolShoot()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Time.time - timeTillNextAttack >= 1f/GameDataHolder.pistolFireRate && currentPistolMagazine > 0 && reticle.activeInHierarchy == true)
         {
+            if (Input.GetKey(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse0))
+            {
             Instantiate(projectile, ejectionPoint.position, gun.rotation);
 
             randomOption = Random.Range(0, muzzleFlashes.Length);
@@ -98,6 +96,8 @@ public class PlayerController : MonoBehaviour
             Vector3 afterShotScale = new Vector3(0.05f,0.05f,1);
             reticle.transform.localScale += afterShotScale;
             reticleOutline.fillAmount -= 1f/GameDataHolder.pistolMagazine;
+            timeTillNextAttack = Time.time;
+            }
         }
     }
 
@@ -139,9 +139,10 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         deathTimeText.text = time.ToString("n1");
+        
         if (timeAdded == false)
         {
-            sb.AddEntry(newEntry = new ScoreboardEntryData(){ entryTime = time});
+            sb.AddEntry(newEntry = new ScoreboardEntryData() { entryTime = time});
             timeAdded = true;
         }
 

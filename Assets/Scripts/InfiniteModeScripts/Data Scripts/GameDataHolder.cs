@@ -4,6 +4,7 @@ public class GameDataHolder : MonoBehaviour, IDataPersistence
 {
     public static int money;
     public static int pistolDamage;
+    public static int turretDamage;
     public static float pistolFireRate;
     public static int pistolMagazine;
     public static float pistolReloadTime;
@@ -23,6 +24,7 @@ public class GameDataHolder : MonoBehaviour, IDataPersistence
         invincibilityAbilityPurchased = data.invincibilityAbilityPurchased;
         bombAbilityPurchased = data.bombAbilityPurchased;
         infiniteAmmoPurchased = data.infiniteAmmoPurchased;
+        turretDamage = data.turretDamage;
     }
 
     public void SaveData(GameData data)
@@ -36,5 +38,6 @@ public class GameDataHolder : MonoBehaviour, IDataPersistence
         data.invincibilityAbilityPurchased = invincibilityAbilityPurchased;
         data.bombAbilityPurchased = bombAbilityPurchased;
         data.infiniteAmmoPurchased = infiniteAmmoPurchased;
+        data.turretDamage = turretDamage;
     }
 }
