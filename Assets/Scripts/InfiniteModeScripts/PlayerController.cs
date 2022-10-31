@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -19,12 +20,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource playerSounds, bgmSource;
     [SerializeField] AudioClip fireSound, reloadSound, deathSound;
     private bool soundPlayed = false, timeAdded;
-    public bool invincible;
+    public bool invincible, isDead = false;
     private Vector3 reticleStartScale;
     private Color reticleStartColor = new Color(0,1,0,0.8f);
     private Color reticleMiddleColor = new Color(1,0.5f,0,0.8f);
     private Color reticleEndColor = new Color(1,0,0,0.8f);
     [SerializeField] private Image reticleOutline;
+    [SerializeField] Animator anim;
     private State state;
     enum State
     {
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         SetPistolStats();
         Time.timeScale = 1;
         soundPlayed = false;
+        anim.GetComponent<Animator>();
     }
     private void Update()
     {
@@ -133,24 +136,28 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDeath()
     {
-        reticle.SetActive(false);
-        Debug.Log("Player is Dead");
-        gameOverObj.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        deathTimeText.text = time.ToString("n1");
+        StartCoroutine(death());
+        if(isDead)
+        {
+            reticle.SetActive(false);
+            Debug.Log("Player is Dead");
+            gameOverObj.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.visible = true;
+            deathTimeText.text = time.ToString("n1");
         
-        if (timeAdded == false)
-        {
-            sb.AddEntry(newEntry = new ScoreboardEntryData() { entryTime = time});
-            timeAdded = true;
-        }
+            if (timeAdded == false)
+            {
+                sb.AddEntry(newEntry = new ScoreboardEntryData() { entryTime = time});
+                timeAdded = true;
+            }
 
-        bgmSource.Stop();
-        if(!soundPlayed)
-        {
-            PlaySound(deathSound);
-            soundPlayed = true;
+            bgmSource.Stop();
+            if(!soundPlayed)
+            {
+                PlaySound(deathSound);
+                soundPlayed = true;
+            }
         }
         
     }
@@ -194,5 +201,12 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+    }
+
+    IEnumerator death()
+    {
+        anim.SetTrigger("Death");
+        yield return new WaitForSeconds(1f);
+        isDead = true;
     }
 }
