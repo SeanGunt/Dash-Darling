@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float movementSpeed, lookSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform gun, ejectionPoint, muzzleFlashPoint;
-    [SerializeField] GameObject projectile, gameOverObj, reticle;
+    [SerializeField] GameObject projectile, gameOverObj, reticle, arms;
     [SerializeField] GameObject[] muzzleFlashes;
     [SerializeField] TextMeshProUGUI pistolMagazineText, timeText, deathTimeText;
     [HideInInspector] public int randomOption, currentPistolMagazine;
@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        rb.simulated = true;
+        movementSpeed = 5;
+        arms.SetActive(true);
         reticle.SetActive(true);
         reticleStartScale = reticle.transform.localScale;
         timeAdded = false;
@@ -139,7 +142,6 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(death());
         if(isDead)
         {
-            reticle.SetActive(false);
             Debug.Log("Player is Dead");
             gameOverObj.SetActive(true);
             Time.timeScale = 0;
@@ -205,7 +207,12 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator death()
     {
+        rb.simulated = false;
+        reticle.SetActive(false);
+        movementSpeed = 0;
+        arms.SetActive(false);
         anim.SetTrigger("Death");
+        this.transform.position = Vector2.Lerp(this.transform.position, new Vector2(this.transform.position.x, 2f), 10f * Time.deltaTime);
         yield return new WaitForSeconds(1f);
         isDead = true;
     }

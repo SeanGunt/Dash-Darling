@@ -7260,11 +7260,6 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 7303805526208689136, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
   m_PrefabInstance: {fileID: 7787642311007493526}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1784211261 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1784211265, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
-  m_PrefabInstance: {fileID: 7787642311007493526}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1807493371
 GameObject:
   m_ObjectHideFlags: 0
@@ -8725,10 +8720,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1908482255}
     - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 1784211261}
-    - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
       propertyPath: reticle
       value: 
       objectReference: {fileID: 525542032}
@@ -8740,10 +8731,6 @@ PrefabInstance:
       propertyPath: bgmSource
       value: 
       objectReference: {fileID: 451895829}
-    - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
-      propertyPath: deathSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 2418ddd1244275f44984db2741fab77e, type: 3}
     - target: {fileID: 400316914, guid: a80df2cb376edef43aa54cb02e0f93de, type: 3}
       propertyPath: gameOverObj
       value: 
