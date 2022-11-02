@@ -70,6 +70,17 @@ public class Zombie : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        if (other.gameObject.tag == "Shield")
+        {
+            health = health - 50;
+            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(50,0);
+            if (health <= 0)
+            {
+                deathParticles.transform.position = this.transform.position;
+                Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     private void Death()
