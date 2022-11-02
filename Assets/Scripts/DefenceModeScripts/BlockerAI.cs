@@ -28,16 +28,16 @@ public class BlockerAI : MonoBehaviour
         rb.transform.position = new Vector2(rb.transform.position.x + direction.x * Time.deltaTime * speed, rb.transform.position.y);
     }
 
-    public void SpawnBlocker()
-    {
-        Instantiate(this.gameObject, new Vector2(-5,-3), Quaternion.identity);
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Destroy(this.gameObject);
+            speed = 0;
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 }

@@ -105,6 +105,12 @@ public class Bat : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        if (other.gameObject.tag  == "Sniper")
+        {
+            deathParticles.transform.position = this.transform.position;
+            Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
 
     private void Death()

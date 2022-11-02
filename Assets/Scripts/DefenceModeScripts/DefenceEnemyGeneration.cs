@@ -8,7 +8,7 @@ public class DefenceEnemyGeneration : MonoBehaviour
     [SerializeField] private float spawnBatTimer, spawnHellBatTimer, spawnZombieTimer, spawnHelmetZombieTimer;
     [SerializeField] private float minWaitZombie, minWaitFlyer, minWaitHellBat, maxWaitZombie, maxWaitFlyer, maxWaitHellBat;
     private float randomSpawnHeight;
-    private float difficulty = 0.25f;
+    private float difficulty = 0.10f;
 
     private void Update()
     {
@@ -41,7 +41,7 @@ public class DefenceEnemyGeneration : MonoBehaviour
 
     private void SpawnBat()
     {
-        randomSpawnHeight = Random.Range(0.0f, 4f);
+        randomSpawnHeight = Random.Range(0.0f, 2.5f);
         Instantiate(bat, new Vector2(15f,randomSpawnHeight), Quaternion.identity);
 
         spawnBatTimer = Random.Range(minWaitFlyer/difficulty,maxWaitFlyer/difficulty);
@@ -56,7 +56,7 @@ public class DefenceEnemyGeneration : MonoBehaviour
 
     private void SpawnHellBat()
     {
-        randomSpawnHeight = Random.Range(0.0f, 4f);
+        randomSpawnHeight = Random.Range(0.0f, 2.5f);
         Instantiate(hellBat, new Vector2(15f,randomSpawnHeight), Quaternion.identity);
 
         spawnHellBatTimer = Random.Range(minWaitHellBat/difficulty,maxWaitHellBat/difficulty);

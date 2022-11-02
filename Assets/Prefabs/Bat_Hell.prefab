@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8078525160076109808}
   - component: {fileID: 8525576358106715247}
   - component: {fileID: 8006317088575555341}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8058836256809908833}
   - component: {fileID: 3346259581934110130}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 209169764306346451}
   - component: {fileID: -3745895300319224178}
   - component: {fileID: 1598408895257744955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bat_Hell
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 803270014755318033}
   - component: {fileID: 6479586135372733548}
   - component: {fileID: 2863795308673197422}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

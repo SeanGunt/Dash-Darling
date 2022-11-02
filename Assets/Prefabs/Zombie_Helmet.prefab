@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3619902714698164804}
   - component: {fileID: 5843946145057377722}
   - component: {fileID: 4582321339032907014}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2643273511968594888}
   - component: {fileID: 8667878062316927301}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 2821417277002447987}
   - component: {fileID: -4511451267137210388}
   - component: {fileID: -2202548986586284551}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Zombie_Helmet
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 2081644506819146484}
   - component: {fileID: 6183166977406104413}
   - component: {fileID: 3185800656981108017}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
