@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TurretFire : MonoBehaviour
 {
-    private float turretFireRate = 17.5f;
+    private float turretFireRate = 12.5f;
     private float timeTillNextAttack;
-    [SerializeField] private GameObject projectile, gunPivot;
+    [SerializeField] private GameObject projectile, gunPivot, reticle;
     [SerializeField] private Transform ejectionPoint;
     private void Update()
     {
@@ -15,7 +15,7 @@ public class TurretFire : MonoBehaviour
 
     private void Fire()
     {
-        if (Time.time - timeTillNextAttack >= 1f/turretFireRate)
+        if (Time.time - timeTillNextAttack >= 1f/turretFireRate && reticle.activeInHierarchy)
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
