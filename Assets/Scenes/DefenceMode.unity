@@ -1720,7 +1720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -760, y: -441}
+  m_AnchoredPosition: {x: 496, y: -471}
   m_SizeDelta: {x: 132.7, y: 102.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &364448431
@@ -2010,7 +2010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.1, y: -18.6}
+  m_AnchoredPosition: {x: 37.399998, y: -3.3999872}
   m_SizeDelta: {x: 47.4, y: 62.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &499249118
@@ -3767,6 +3767,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883249664}
   m_CullTransparentMesh: 1
+--- !u!1 &924432154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924432155}
+  - component: {fileID: 924432156}
+  m_Layer: 0
+  m_Name: AllySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &924432155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924432154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.005508, y: 0.41578957, z: -2.9968765}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &924432156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924432154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe06a845d029874ea7f5c6f1baed4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blocker: {fileID: 3934415935213791755, guid: 6a137b3c37bdb814f98baffef7790959, type: 3}
+  sniper: {fileID: 6502565617715033261, guid: 978f49e3c0e5d5c4a84b4273a9847725, type: 3}
 --- !u!1 &931117349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4307,8 +4353,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039346942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.65, y: -4.56, z: 0}
-  m_LocalScale: {x: 25.65, y: 1.12, z: 1}
+  m_LocalPosition: {x: 3.65, y: -4.77, z: 0}
+  m_LocalScale: {x: 25.65, y: 1.57675, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5104,7 +5150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.4, y: -18.6}
+  m_AnchoredPosition: {x: -0.3000008, y: -3.3999872}
   m_SizeDelta: {x: 47.4, y: 62.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156031531
@@ -5195,7 +5241,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1156031533}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 924432156}
+        m_TargetAssemblyTypeName: AllySpawner, Assembly-CSharp
+        m_MethodName: SpawnSniper
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1156031533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5739,9 +5797,9 @@ MonoBehaviour:
   spawnHellBatTimer: 25
   spawnZombieTimer: 5
   spawnHelmetZombieTimer: 50
-  minWaitZombie: 2
-  minWaitFlyer: 1
-  minWaitHellBat: 2
+  minWaitZombie: 3
+  minWaitFlyer: 2
+  minWaitHellBat: 4
   maxWaitZombie: 10
   maxWaitFlyer: 5
   maxWaitHellBat: 7
@@ -5918,7 +5976,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31.3, y: -18.6}
+  m_AnchoredPosition: {x: -38, y: -3.4}
   m_SizeDelta: {x: 47.4, y: 62.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330170027
@@ -5965,8 +6023,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3934415935213791860, guid: 6a137b3c37bdb814f98baffef7790959, type: 3}
-        m_TargetAssemblyTypeName: BlockerAI, Assembly-CSharp
+      - m_Target: {fileID: 924432156}
+        m_TargetAssemblyTypeName: AllySpawner, Assembly-CSharp
         m_MethodName: SpawnBlocker
         m_Mode: 1
         m_Arguments:
@@ -6385,7 +6443,7 @@ GameObject:
   - component: {fileID: 1534111625}
   - component: {fileID: 1534111626}
   - component: {fileID: 1534111627}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StiltRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6796,6 +6854,7 @@ GameObject:
   - component: {fileID: 1585351010}
   - component: {fileID: 1585351009}
   - component: {fileID: 1585351008}
+  - component: {fileID: 1585351011}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6862,13 +6921,46 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585351007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -0.56, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1585351011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585351007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1593703067
 GameObject:
   m_ObjectHideFlags: 0
@@ -7576,7 +7668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1787833879}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TempPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7812,7 +7904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1842633995}
   - component: {fileID: 1842633996}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StiltLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8296,7 +8388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1971021456}
   - component: {fileID: 1971021457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TopPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

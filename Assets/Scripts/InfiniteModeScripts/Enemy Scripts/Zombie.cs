@@ -9,9 +9,15 @@ public class Zombie : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] private ParticleSystem deathParticles;
     [SerializeField] AudioClip spawnSound;
+    private State state;
+    enum State
+    {
+        moving, blocked
+    }
 
     void Awake()
     {
+        state = State.moving;
         rb = this.GetComponent<Rigidbody2D>();
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
         PlaySound(spawnSound);
@@ -24,9 +30,18 @@ public class Zombie : MonoBehaviour
 
     void Update()
     {
-        Move();
-    }
+        switch (state)
+        {
+            default:
+            case State.moving:
+                Move();
+            break;
 
+            case State.blocked:
+                Blocked();
+            break;
+        }
+    }
     void Move()
     {
         Vector2 direction = Vector2.left;
@@ -72,6 +87,11 @@ public class Zombie : MonoBehaviour
         }
         if (other.gameObject.tag == "Shield")
         {
+            state = State.blocked;
+        }
+        
+        if (other.gameObject.tag  == "Sniper")
+        {
             health = health - 50;
             healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(50,0);
             if (health <= 0)
@@ -79,8 +99,13 @@ public class Zombie : MonoBehaviour
                 deathParticles.transform.position = this.transform.position;
                 Instantiate(deathParticles, this.transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
+            
             }
         }
+    }
+    private void Blocked()
+    {
+        
     }
 
     private void Death()

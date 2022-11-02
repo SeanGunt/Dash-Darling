@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 34417605816857838}
   - component: {fileID: 1120927857365223341}
   - component: {fileID: 4500094324928749433}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 593094306927014339}
   - component: {fileID: 2247119901762084182}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 1139044790936506986}
   - component: {fileID: 1469026177722270801}
   - component: {fileID: 8813448081316311476}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 1199031897192593799}
   - component: {fileID: 1677578782704634777}
   - component: {fileID: 5724963643895622322}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}

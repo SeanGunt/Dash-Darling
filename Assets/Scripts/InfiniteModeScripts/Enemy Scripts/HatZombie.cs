@@ -81,6 +81,19 @@ public class HatZombie : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        if (other.gameObject.tag  == "Sniper")
+        {
+            health = health - 50/2;
+            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(50/2,0);
+            if (health <= 0)
+            {
+                deathParticles.transform.position = this.transform.position;
+                Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            
+            }
+        }
     }
 
     private void Death()
