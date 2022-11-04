@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PistolUpgrades : MonoBehaviour, IDataPersistence
 {
     [SerializeField] Button pistolDmgButton, pistolRofButton, pistolAmmoButton, pistolReloadButton;
+    [SerializeField] TextMeshProUGUI dmgText, RofText, AmmoText, ReloadText;
     private bool isPistolDmgPurchasable, isPistolRoFPurchasable, isPistolAmmoPurchasable, isPistolReloadPurchasable;
 
     private void Update()
@@ -16,6 +18,10 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
         {
             pistolDmgButton.interactable = false;
             pistolDmgButton.GetComponent<Image>().color = Color.red;
+            if(!isPistolDmgPurchasable)
+            {
+                dmgText.text = "Purchased!";
+            }
         }
 
         if(isPistolRoFPurchasable && GameDataHolder.money >= 10000)
@@ -26,6 +32,11 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
         {
             pistolRofButton.interactable = false;
             pistolRofButton.GetComponent<Image>().color = Color.red;
+            if(!isPistolRoFPurchasable)
+            {
+                RofText.text = "Purchased!";
+            }
+
         }
 
         if(isPistolAmmoPurchasable && GameDataHolder.money >= 10000)
@@ -36,6 +47,10 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
         {
             pistolAmmoButton.interactable = false;
             pistolAmmoButton.GetComponent<Image>().color = Color.red;
+            if(!isPistolAmmoPurchasable)
+            {
+                AmmoText.text = "Purchased!";
+            }
         }
         
         if(isPistolReloadPurchasable && GameDataHolder.money >= 10000)
@@ -46,6 +61,10 @@ public class PistolUpgrades : MonoBehaviour, IDataPersistence
         {
             pistolReloadButton.interactable = false;
             pistolReloadButton.GetComponent<Image>().color = Color.red;
+            if(!isPistolReloadPurchasable)
+            {
+                ReloadText.text = "Purchased!";
+            }
         }
     }
     public void LoadData(GameData data)

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AbilityPurchase : MonoBehaviour, IDataPersistence
 {
     [SerializeField] Button purchaseSlowAbilityButton, purchaseInvincibilityButton, purchaseBombAbilityButton, purchaseInfiniteAmmoButton;
+    [SerializeField] TextMeshProUGUI slowText, invincText, bombText, AmmoText;
     private bool isSlowAbilityPurchasable, isInvincibilityAbilityPurchasable, isBombAbilityPurchasable, isInfiniteAmmoPurchasable;
 
     private void Update()
@@ -18,6 +20,10 @@ public class AbilityPurchase : MonoBehaviour, IDataPersistence
         {
             purchaseSlowAbilityButton.interactable = false;
             purchaseSlowAbilityButton.GetComponent<Image>().color = Color.red;
+            if(!isSlowAbilityPurchasable)
+            {
+                slowText.text = "Purchased!";
+            }
         }
 
         if (isInvincibilityAbilityPurchasable && GameDataHolder.money >= 5000)
@@ -28,6 +34,10 @@ public class AbilityPurchase : MonoBehaviour, IDataPersistence
         {
             purchaseInvincibilityButton.interactable = false;
             purchaseInvincibilityButton.GetComponent<Image>().color = Color.red;
+            if(!isInvincibilityAbilityPurchasable)
+            {
+                invincText.text = "Purchased!";
+            }
         }
 
         if (isBombAbilityPurchasable && GameDataHolder.money >= 5000)
@@ -38,6 +48,10 @@ public class AbilityPurchase : MonoBehaviour, IDataPersistence
         {
             purchaseBombAbilityButton.interactable = false;
             purchaseBombAbilityButton.GetComponent<Image>().color = Color.red;
+            if(!isBombAbilityPurchasable)
+            {
+                bombText.text = "Purchased!";
+            }
         }
 
         if (isInfiniteAmmoPurchasable && GameDataHolder.money >= 25000)
@@ -48,6 +62,10 @@ public class AbilityPurchase : MonoBehaviour, IDataPersistence
         {
             purchaseInfiniteAmmoButton.interactable = false;
             purchaseInfiniteAmmoButton.GetComponent<Image>().color = Color.red;
+            if(!isInfiniteAmmoPurchasable)
+            {
+                AmmoText.text = "Purchased!";
+            }
         }
 
     }
