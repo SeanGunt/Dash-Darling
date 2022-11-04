@@ -6,11 +6,12 @@ public class BlockerAI : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float speed = 0.5f;
-    private float health = 100;
-    [SerializeField] RectTransform healthBar;
+    public float health = 100;
+    [SerializeField] public RectTransform healthBar;
     private void Awake()
     {
         health = 100;
+        healthBar.sizeDelta = new Vector2(100,20);
         speed = 0.5f;
         rb = GetComponent<Rigidbody2D>();
     }

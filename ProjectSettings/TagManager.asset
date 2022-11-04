@@ -10,6 +10,7 @@ TagManager:
   - Shield
   - Sniper
   - SniperAlly
+  - Healer
   layers:
   - Default
   - TransparentFX
