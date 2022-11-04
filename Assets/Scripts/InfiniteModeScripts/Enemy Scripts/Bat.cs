@@ -102,6 +102,7 @@ public class Bat : MonoBehaviour
             {
                 deathParticles.transform.position = this.transform.position;
                 Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+                ChocoCoinsManager.coins += 1;
                 Destroy(this.gameObject);
             }
         }
@@ -109,6 +110,7 @@ public class Bat : MonoBehaviour
         {
             deathParticles.transform.position = this.transform.position;
             Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+            ChocoCoinsManager.coins += 1;
             Destroy(this.gameObject);
         }
     }

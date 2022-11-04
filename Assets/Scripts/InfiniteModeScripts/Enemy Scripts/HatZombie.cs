@@ -9,6 +9,11 @@ public class HatZombie : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] private ParticleSystem deathParticles;
     [SerializeField] AudioClip spawnSound;
+    private State state;
+    enum State
+    {
+        moving, blocked
+    }
 
     void Awake()
     {
@@ -24,7 +29,17 @@ public class HatZombie : MonoBehaviour
 
     void Update()
     {
-        Move();
+        switch (state)
+        {
+            default:
+            case State.moving:
+                Move();
+            break;
+
+            case State.blocked:
+                Blocked();
+            break;
+        }
     }
 
     void Move()
@@ -67,19 +82,13 @@ public class HatZombie : MonoBehaviour
             {
                 deathParticles.transform.position = this.transform.position;
                 Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+                ChocoCoinsManager.coins += 5;
                 Destroy(this.gameObject);
             }
         }
         if (other.gameObject.tag == "Shield")
         {
-            health = health - 25;
-            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(25,0);
-            if (health <= 0)
-            {
-                deathParticles.transform.position = this.transform.position;
-                Instantiate(deathParticles, this.transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
-            }
+            state = State.blocked;
         }
 
         if (other.gameObject.tag  == "Sniper")
@@ -90,9 +99,21 @@ public class HatZombie : MonoBehaviour
             {
                 deathParticles.transform.position = this.transform.position;
                 Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+                ChocoCoinsManager.coins += 5;
                 Destroy(this.gameObject);
             
             }
+        }
+    }
+    private void Blocked()
+    {
+
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Shield")
+        {
+            state = State.moving;
         }
     }
 

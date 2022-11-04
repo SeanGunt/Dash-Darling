@@ -104,6 +104,7 @@ public class HellBat : MonoBehaviour
             {
                 deathParticles.transform.position = this.transform.position;
                 Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+                ChocoCoinsManager.coins += 2;
                 Destroy(this.gameObject);
             }
         }
@@ -111,6 +112,7 @@ public class HellBat : MonoBehaviour
         {
             deathParticles.transform.position = this.transform.position;
             Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+            ChocoCoinsManager.coins += 2;
             Destroy(this.gameObject);
         }
     }

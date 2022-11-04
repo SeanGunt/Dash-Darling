@@ -40,7 +40,6 @@ public class SniperAI : MonoBehaviour
         {
             Move();
             sniperPivot.localEulerAngles = new Vector3(0,0,-180);
-            Debug.Log("No Colliders");
             return;
         }
 
@@ -48,7 +47,6 @@ public class SniperAI : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         sniperPivot.rotation = Quaternion.Slerp(sniperPivot.rotation, rotation, lookSpeed * Time.deltaTime);
-        Debug.Log(sniperPivot.eulerAngles);
 
         if(Time.time -  timeTillNextAttack >= 1/fireRate)
         {
