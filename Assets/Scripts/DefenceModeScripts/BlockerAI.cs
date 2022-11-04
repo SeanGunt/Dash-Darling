@@ -7,6 +7,7 @@ public class BlockerAI : MonoBehaviour
     private Rigidbody2D rb;
     public float speed = 0.5f;
     private float health = 100;
+    [SerializeField] RectTransform healthBar;
     private void Awake()
     {
         health = 100;
@@ -32,8 +33,20 @@ public class BlockerAI : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
+            health -= 50;
+            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(50,0);
             speed = 0;
+
+            if (health <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        speed = 0.5f;
     }
 
     void OnBecameInvisible()
