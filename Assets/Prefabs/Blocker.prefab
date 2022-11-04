@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  health: 100
   healthBar: {fileID: 753087381896621421}
 --- !u!61 &1402939459
 BoxCollider2D:
@@ -251,7 +252,7 @@ GameObject:
   - component: {fileID: 3934415935662744914}
   m_Layer: 8
   m_Name: Shield
-  m_TagString: Shield
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
