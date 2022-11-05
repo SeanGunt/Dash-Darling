@@ -11,6 +11,6 @@ public class DefenceTimer : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        timerText.text = timer.ToString("n2");
+        timerText.text = timer.ToString("n1");
     }
 }
