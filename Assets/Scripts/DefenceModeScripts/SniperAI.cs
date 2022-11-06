@@ -10,13 +10,16 @@ public class SniperAI : MonoBehaviour
     private float timeTillNextAttack;
     private Rigidbody2D rb;
     public LayerMask checkLayers;
-    public Transform sniperPivot, gunRotation;
+    public Transform sniperPivot;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private bool canAttack;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip sniperShotSound;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxObj.SetActive(false);
         animator = GetComponent<Animator>();
@@ -57,6 +60,7 @@ public class SniperAI : MonoBehaviour
 
         if(Time.time -  timeTillNextAttack >= 1/fireRate && canAttack)
         {
+            audioSource.PlayOneShot(sniperShotSound);
             Instantiate(sniperBullet, ejectionPoint.transform.position, sniperPivot.rotation);
             timeTillNextAttack = Time.time;
         }

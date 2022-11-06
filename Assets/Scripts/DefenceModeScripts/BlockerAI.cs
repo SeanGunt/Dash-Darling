@@ -6,19 +6,23 @@ using System;
 public class BlockerAI : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float speed = 0.5f;
+    public float speed;
     public float health = 100, checkRadius;
     public Transform checkRadiusObj;
     public LayerMask checkLayers;
     [SerializeField] public RectTransform healthBar;
     private Animator animator;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip shieldSlamSound;
+    private float usedSpeed;
     private void Awake()
     {
         health = 100;
         healthBar.sizeDelta = new Vector2(100,20);
-        speed = 0.5f;
+        usedSpeed = speed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -35,10 +39,11 @@ public class BlockerAI : MonoBehaviour
         Array.Sort(colliders, new DistanceComparer(transform));
 
         Vector2 direction = Vector2.right;
-        rb.transform.position = new Vector2(rb.transform.position.x + direction.x * Time.deltaTime * speed, rb.transform.position.y);
+        rb.transform.position = new Vector2(rb.transform.position.x + direction.x * Time.deltaTime * usedSpeed, rb.transform.position.y);
 
         if (colliders.Length == 0)
         {
+            usedSpeed = speed;
             animator.SetBool("NearEnemy", false);
             return;
         }
@@ -46,7 +51,7 @@ public class BlockerAI : MonoBehaviour
         float distanceToEnemy = Vector2.Distance(this.transform.position, colliders[0].transform.position);
         if (distanceToEnemy < checkRadius)
         {
-            speed = 0;
+            usedSpeed = 0;
             animator.SetBool("NearEnemy", true);
         }
     }
@@ -65,11 +70,6 @@ public class BlockerAI : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        speed = 0.5f;
-    }
-
     void OnBecameInvisible()
     {
         Destroy(this.gameObject);
@@ -78,5 +78,10 @@ public class BlockerAI : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(checkRadiusObj.position, checkRadius);
+    }
+
+    public void PlayBlockSound()
+    {
+        audioSource.PlayOneShot(shieldSlamSound);
     }
 }
