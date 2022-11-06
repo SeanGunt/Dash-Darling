@@ -1170,6 +1170,7 @@ GameObject:
   - component: {fileID: 182839339}
   - component: {fileID: 182839341}
   - component: {fileID: 182839340}
+  - component: {fileID: 182839342}
   m_Layer: 0
   m_Name: MachineGun
   m_TagString: Untagged
@@ -1192,7 +1193,7 @@ Transform:
   - {fileID: 2076881198}
   - {fileID: 2138519871}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &182839340
 MonoBehaviour:
@@ -1222,9 +1223,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1686269879949221100, guid: 2c40eaa16587c71468f425f99fdd898d, type: 3}
-  gunPivot: {fileID: 2138519870}
+  gunPivot: {fileID: 642779614}
   reticle: {fileID: 83525107}
   ejectionPoint: {fileID: 193652472}
+  turretShotSound: {fileID: 8300000, guid: 608a05c8e08df6f469a7080c1ec149fc, type: 3}
+--- !u!82 &182839342
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182839338}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &193652471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1547,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 514042796}
           m_TargetAssemblyTypeName: OnHoverSound, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -2463,6 +2561,10 @@ MonoBehaviour:
   - {fileID: -4511451267137210388, guid: 06002a193d8c729448c2513afa74e517, type: 3}
   - {fileID: -4412997143488414740, guid: 725fa6ef0ff0c974c8fc31c26e44cd9f, type: 3}
   - {fileID: 8173968534885762401, guid: b2a1bdefdea872d4daeee885d346ce31, type: 3}
+  - {fileID: 4118908148936762016, guid: 978f49e3c0e5d5c4a84b4273a9847725, type: 3}
+  - {fileID: 430773946, guid: b21e849ba940caa419b5b8353108b26e, type: 3}
+  - {fileID: 1385396799, guid: 6a137b3c37bdb814f98baffef7790959, type: 3}
+  - {fileID: 182839342}
 --- !u!114 &514042798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2487,6 +2589,10 @@ MonoBehaviour:
   - {fileID: -4511451267137210388, guid: 06002a193d8c729448c2513afa74e517, type: 3}
   - {fileID: -4412997143488414740, guid: 725fa6ef0ff0c974c8fc31c26e44cd9f, type: 3}
   - {fileID: 8173968534885762401, guid: b2a1bdefdea872d4daeee885d346ce31, type: 3}
+  - {fileID: 4118908148936762016, guid: 978f49e3c0e5d5c4a84b4273a9847725, type: 3}
+  - {fileID: 430773946, guid: b21e849ba940caa419b5b8353108b26e, type: 3}
+  - {fileID: 1385396799, guid: 6a137b3c37bdb814f98baffef7790959, type: 3}
+  - {fileID: 182839342}
 --- !u!4 &514042799
 Transform:
   m_ObjectHideFlags: 0
@@ -2776,7 +2882,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &632467016
 GameObject:
@@ -2860,7 +2966,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &642779614
 GameObject:
@@ -2939,7 +3045,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642779614}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.026176924, w: 0.99965733}
   m_LocalPosition: {x: 0.068, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2947,7 +3053,7 @@ Transform:
   - {fileID: 193652472}
   m_Father: {fileID: 2138519871}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3}
 --- !u!95 &642779617
 Animator:
   serializedVersion: 4
@@ -3032,7 +3138,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 514042796}
           m_TargetAssemblyTypeName: OnHoverSound, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -3531,7 +3637,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 514042796}
           m_TargetAssemblyTypeName: OnHoverSound, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -4642,7 +4748,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1039346945
 BoxCollider2D:
@@ -4831,7 +4937,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 514042796}
           m_TargetAssemblyTypeName: OnHoverSound, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -5838,7 +5944,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 514042796}
           m_TargetAssemblyTypeName: OnHoverSound, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -6099,7 +6205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1314601097
 MonoBehaviour:
@@ -7250,7 +7356,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1585351011
 MonoBehaviour:
@@ -8197,7 +8303,7 @@ Transform:
   - {fileID: 1534111625}
   - {fileID: 1971021456}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810707525
 GameObject:
@@ -8294,7 +8400,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 514042796}
           m_TargetAssemblyTypeName: OnHoverSound, Assembly-CSharp
           m_MethodName: OnHover
           m_Mode: 1
@@ -8350,7 +8456,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 514042798}
         m_TargetAssemblyTypeName: AudioManagerTest, Assembly-CSharp
         m_MethodName: SaveSoundSettings
         m_Mode: 1

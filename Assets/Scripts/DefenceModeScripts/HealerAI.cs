@@ -5,17 +5,20 @@ using UnityEngine;
 public class HealerAI : MonoBehaviour
 {
     private GameObject[] shieldAllies;
-    private float healSpeed = 8f, speed = 0.5f;
+    private float healSpeed = 6f;
+    public float speed;
     private bool isMoving;
     private Rigidbody2D rb;
-    private Coroutine coroutine = null;
     private Animator animator;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip healSound;
 
     private void Awake()
     {
         isMoving = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -23,35 +26,38 @@ public class HealerAI : MonoBehaviour
         if (isMoving)
         {
             Move();
-            animator.SetBool("isHealing", false);
         }
-        Heal();
+        else
+        {
+            Heal();
+        }
     }
 
     private void Move()
     {
         Vector2 direction = Vector2.right;
         rb.transform.position = new Vector2(rb.transform.position.x + direction.x * Time.deltaTime * speed, rb.transform.position.y);
-    }
-    public void Heal()
-    {
+
         healSpeed -= Time.deltaTime;
         if (healSpeed <= 0f)
         {
             isMoving = false;
-            StartCoroutine("PlayAnimation");
-            shieldAllies = GameObject.FindGameObjectsWithTag("Shield");
+        }
+    }
+    public void Heal()
+    {
+        animator.SetBool("isHealing", true);
+        shieldAllies = GameObject.FindGameObjectsWithTag("Shield");
+        healSpeed = 6f;
 
-            foreach(GameObject shieldAlly in shieldAllies)
+        foreach(GameObject shieldAlly in shieldAllies)
+        {
+            if (shieldAlly.activeInHierarchy == false)
             {
-                if (shieldAlly.activeInHierarchy == false)
-                {
-                    return;
-                }
-                shieldAlly.GetComponent<BlockerAI>().health = 100f;
-                shieldAlly.GetComponent<BlockerAI>().healthBar.sizeDelta = new Vector2(100,20);
-                healSpeed = 8f;
+                return;
             }
+            shieldAlly.GetComponent<BlockerAI>().health = 100f;
+            shieldAlly.GetComponent<BlockerAI>().healthBar.sizeDelta = new Vector2(100,20);
         }
     }
 
@@ -63,10 +69,13 @@ public class HealerAI : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayAnimation()
+    public void StartHealAnimation()
     {
-        animator.SetBool("isHealing", true);
-        yield return new WaitForSeconds(1f);
+        audioSource.PlayOneShot(healSound);
+    }
+    public void EndHealAnimation()
+    {
         isMoving = true;
+        animator.SetBool("isHealing", false);
     }
 }
