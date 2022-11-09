@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4408757654826438400}
-  - component: {fileID: 4192106674819182125}
   - component: {fileID: 4408757654826438430}
   - component: {fileID: 4408757654826438401}
+  - component: {fileID: 2682481004817858538}
   m_Layer: 0
-  m_Name: TimeText
+  m_Name: DefenceTimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,19 +39,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4192106674819182125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4408757654826438403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63eadfec09e30464a9e10b26f884e3e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryTimeText: {fileID: 4408757654826438401}
 --- !u!222 &4408757654826438430
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -151,3 +138,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2682481004817858538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4408757654826438403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2233a0004f1235b42be5b1c539ae8c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entryTimeText: {fileID: 4408757654826438401}

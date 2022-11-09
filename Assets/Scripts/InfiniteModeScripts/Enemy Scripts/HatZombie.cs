@@ -104,6 +104,12 @@ public class HatZombie : MonoBehaviour
             
             }
         }
+        if (other.gameObject.tag == "Platform")
+        {
+            deathParticles.transform.position = this.transform.position;
+            Instantiate(deathParticles, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
     private void Blocked()
     {
