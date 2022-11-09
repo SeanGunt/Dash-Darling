@@ -45,7 +45,7 @@ public class SniperAI : MonoBehaviour
         {
             animator.SetBool("isAttacking", false);
             boxObj.SetActive(false);
-            spriteRenderer.sortingOrder = 0;
+            spriteRenderer.sortingOrder = 2;
             canAttack = false;
             Move();
             sniperPivot.localEulerAngles = new Vector3(0,0,-180);
