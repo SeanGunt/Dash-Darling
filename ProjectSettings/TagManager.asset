@@ -11,6 +11,7 @@ TagManager:
   - Sniper
   - SniperAlly
   - Healer
+  - Platform
   layers:
   - Default
   - TransparentFX

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class Scoreboard : MonoBehaviour
+public class DefenceScoreboard : MonoBehaviour
     {
     [SerializeField] private int maxScoreBoardEntries = 8;
     [SerializeField] private Transform highscoresHolderTransform;
     [SerializeField] private GameObject scoreboardEntryObject;
 
     [Header("Test")]
-    [SerializeField] ScoreboardEntryData testEntryData = new ScoreboardEntryData();
-    private string SavePath => $"{Application.persistentDataPath}/highscores.json";
+    [SerializeField] DefenceScoreboardEntryData testEntryData = new DefenceScoreboardEntryData();
+    private string SavePath => $"{Application.persistentDataPath}/defencehighscores.json";
 
     private void Start()
     {
-        ScoreboardSaveData savedScores = GetSavedScores();
+        DefenceScoreboardSaveData savedScores = GetSavedScores();
 
         UpdateUI(savedScores);
 
@@ -28,9 +28,9 @@ public class Scoreboard : MonoBehaviour
         AddEntry(testEntryData);
     }
 
-    public void AddEntry(ScoreboardEntryData scoreboardEntryData)
+    public void AddEntry(DefenceScoreboardEntryData scoreboardEntryData)
     {
-        ScoreboardSaveData savedScores = GetSavedScores();
+        DefenceScoreboardSaveData savedScores = GetSavedScores();
 
         bool scoreAdded = false;
 
@@ -58,36 +58,36 @@ public class Scoreboard : MonoBehaviour
         SaveScores(savedScores);
     }
 
-    private void UpdateUI(ScoreboardSaveData savedScores)
+    private void UpdateUI(DefenceScoreboardSaveData savedScores)
     {
         foreach(Transform child in highscoresHolderTransform)
         {
                 Destroy(child.gameObject);
         }
 
-        foreach(ScoreboardEntryData highscore in savedScores.highscores)
+        foreach(DefenceScoreboardEntryData highscore in savedScores.highscores)
         {
-            Instantiate(scoreboardEntryObject, highscoresHolderTransform).GetComponent<ScoreboardEntryUI>().Initialise(highscore);
+            Instantiate(scoreboardEntryObject, highscoresHolderTransform).GetComponent<DefenceScoreboardEntryUI>().Initialise(highscore);
         }
     }
 
-    private ScoreboardSaveData GetSavedScores()
+    private DefenceScoreboardSaveData GetSavedScores()
     {
         if(!File.Exists(SavePath))
         {
             File.Create(SavePath).Dispose();
-            return new ScoreboardSaveData();
+            return new DefenceScoreboardSaveData();
         }
 
         using(StreamReader stream = new StreamReader(SavePath))
         {
             string json = stream.ReadToEnd();
 
-            return JsonUtility.FromJson<ScoreboardSaveData>(json);
+            return JsonUtility.FromJson<DefenceScoreboardSaveData>(json);
         }
     }
 
-    private void SaveScores(ScoreboardSaveData scoreboardSaveData)
+    private void SaveScores(DefenceScoreboardSaveData scoreboardSaveData)
     {
         using(StreamWriter stream = new StreamWriter (SavePath))
         {
@@ -95,5 +95,5 @@ public class Scoreboard : MonoBehaviour
             stream.Write(json);
         }
     }
-    }
+}
 

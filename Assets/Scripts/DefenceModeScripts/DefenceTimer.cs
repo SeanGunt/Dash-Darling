@@ -6,8 +6,13 @@ using TMPro;
 public class DefenceTimer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
-    private float timer;
+    public static float timer;
 
+    private void Awake()
+    {
+        timer = 0f;
+        timerText.text = timer.ToString("n1");
+    }
     private void Update()
     {
         timer += Time.deltaTime;

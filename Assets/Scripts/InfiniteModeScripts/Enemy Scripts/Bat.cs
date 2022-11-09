@@ -5,7 +5,7 @@ public class Bat : MonoBehaviour
     [SerializeField] public static float speed = 3.0f;
     [SerializeField] int health;
     [SerializeField] RectTransform healthBar;
-    private GameObject player;
+    private GameObject player, platform;
     private Rigidbody2D rb;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip spawnSound;
@@ -19,6 +19,7 @@ public class Bat : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindWithTag("Player");
+        platform = GameObject.FindWithTag("Platform");
         state = State.moving;
         rb = this.GetComponent<Rigidbody2D>();
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
@@ -50,21 +51,46 @@ public class Bat : MonoBehaviour
         Vector2 direction = Vector2.left;
         rb.transform.position = new Vector2(rb.transform.position.x + direction.x * Time.deltaTime * speed, rb.transform.position.y);
         
-        float distanceToPlayer = Vector2.Distance(player.transform.position, this.transform.position);
-        if (distanceToPlayer < 7)
+        if (player != null)
         {
-            state = State.diving;
+            float distanceToPlayer = Vector2.Distance(player.transform.position, this.transform.position);
+            if (distanceToPlayer <7)
+            {
+                state = State.diving;
+            }
         }
+        else
+        {
+            float distanceToPlatform = Vector2.Distance(platform.transform.position, this.transform.position);
+            if (distanceToPlatform < 7)
+            {
+            state = State.diving;
+            }
+        }
+        
     }
 
     private void Diving()
     {
-        rb.transform.position = Vector2.Lerp(this.transform.position, player.transform.position, Time.deltaTime * 3f);
-
-        float distanceToPlayer = Vector2.Distance(player.transform.position, this.transform.position);
-        if (distanceToPlayer > 7)
+        if (player != null)
         {
+            float distanceToPlayer = Vector2.Distance(player.transform.position, this.transform.position);
+            rb.transform.position = Vector2.Lerp(this.transform.position, player.transform.position, Time.deltaTime * 3f);
+
+            if (distanceToPlayer > 7)
+            {
+                state = State.moving;
+            }
+        }
+        else
+        {
+            float distanceToPlatform = Vector2.Distance(platform.transform.position, this.transform.position);
+            rb.transform.position = Vector2.Lerp(this.transform.position, platform.transform.position, Time.deltaTime * 3);
+
+            if (distanceToPlatform > 7)
+            {
             state = State.moving;
+            }
         }
     }
 
@@ -111,6 +137,12 @@ public class Bat : MonoBehaviour
             deathParticles.transform.position = this.transform.position;
             Instantiate(deathParticles, this.transform.position, Quaternion.identity);
             ChocoCoinsManager.coins += 1;
+            Destroy(this.gameObject);
+        }
+        if (other.gameObject.tag == "Platform")
+        {
+            deathParticles.transform.position = this.transform.position;
+            Instantiate(deathParticles, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
