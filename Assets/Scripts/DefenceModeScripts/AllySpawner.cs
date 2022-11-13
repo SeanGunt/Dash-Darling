@@ -72,7 +72,7 @@ public class AllySpawner : MonoBehaviour
     {
         if (spawnTimer <= 0 && ChocoCoinsManager.coins >= 10)
         {
-            Instantiate(blocker, new Vector2(-5,-3), Quaternion.identity);
+            Instantiate(blocker, new Vector2(-5,-2.735f), Quaternion.identity);
             ChocoCoinsManager.coins -= 10;
             spawnTimer = 5f;
             canBeSpawned = false;

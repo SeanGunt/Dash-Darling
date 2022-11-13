@@ -121,7 +121,15 @@ public class Zombie : MonoBehaviour
     }
     private void Blocked()
     {
-        
+        GameObject[] blockers = GameObject.FindGameObjectsWithTag("Shield");
+        foreach (GameObject blocker in blockers)
+        {
+            if (!blocker.activeInHierarchy)
+            {
+                state = State.moving;
+            }
+        }
+
     }
 
     private void Death()

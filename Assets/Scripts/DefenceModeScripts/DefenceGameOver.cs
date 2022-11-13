@@ -6,7 +6,7 @@ using TMPro;
 
 public class DefenceGameOver : MonoBehaviour
 {
-    [SerializeField] private GameObject reticle, timerText, coinsText;
+    [SerializeField] private GameObject reticle, timerText, coinsText, alliesObj;
     [SerializeField] private TextMeshProUGUI gameOverTimer;
     [SerializeField] private DefenceScoreboard dfsb;
     private DefenceScoreboardEntryData newEntry = new DefenceScoreboardEntryData();
@@ -18,6 +18,7 @@ public class DefenceGameOver : MonoBehaviour
             dfsb.AddEntry(newEntry = new DefenceScoreboardEntryData() {entryTime = DefenceTimer.timer});
             timeAdded = true;
         }
+        alliesObj.SetActive(false);
         reticle.SetActive(false);
         Cursor.visible = true;
         timerText.SetActive(false);
