@@ -49,7 +49,7 @@ public class DefenceEnemyGeneration : MonoBehaviour
 
     private void SpawnZombie()
     {
-        Instantiate(zombie, new Vector2(15f,-2.5f), Quaternion.identity);
+        Instantiate(zombie, new Vector2(15f,-2.9f), Quaternion.identity);
 
         spawnZombieTimer = Random.Range(minWaitZombie/difficulty,maxWaitZombie/difficulty);
     }
@@ -64,7 +64,7 @@ public class DefenceEnemyGeneration : MonoBehaviour
 
     private void SpawnHelmetZombie()
     {
-        Instantiate(helmetZombie, new Vector2(15f,-2.5f), Quaternion.identity);
+        Instantiate(helmetZombie, new Vector2(15f,-2.9f), Quaternion.identity);
 
         spawnHelmetZombieTimer = 25f;
     }

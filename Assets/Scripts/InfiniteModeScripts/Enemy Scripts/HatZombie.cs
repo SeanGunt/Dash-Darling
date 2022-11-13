@@ -113,7 +113,14 @@ public class HatZombie : MonoBehaviour
     }
     private void Blocked()
     {
-
+        GameObject[] blockers = GameObject.FindGameObjectsWithTag("Shield");
+        foreach (GameObject blocker in blockers)
+        {
+            if (blocker.activeInHierarchy == false)
+            {
+                state = State.moving;
+            }
+        }
     }
     private void OnCollisionExit2D(Collision2D other)
     {
