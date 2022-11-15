@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurretFire : MonoBehaviour
 {
-    private float turretFireRate = 10f;
+    private float turretFireRate = 8.5f;
     private float timeTillNextAttack;
     [SerializeField] private GameObject projectile, gunPivot, reticle;
     [SerializeField] private Transform ejectionPoint;

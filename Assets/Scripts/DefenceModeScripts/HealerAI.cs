@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealerAI : MonoBehaviour
 {
     private GameObject[] shieldAllies;
-    private float healSpeed = 6f;
+    private float healSpeed = 0f;
     public float speed;
     private bool isMoving;
     private Rigidbody2D rb;

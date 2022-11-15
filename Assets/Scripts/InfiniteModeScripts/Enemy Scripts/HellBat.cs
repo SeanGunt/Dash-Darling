@@ -139,7 +139,13 @@ public class HellBat : MonoBehaviour
             deathParticles.transform.position = this.transform.position;
             Instantiate(deathParticles, this.transform.position, Quaternion.identity);
             ChocoCoinsManager.coins += 2;
-            Destroy(this.gameObject);
+            health = health - 50;
+            healthBar.sizeDelta = healthBar.sizeDelta -  new Vector2(50,0);
+
+            if (health <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
         if (other.gameObject.tag == "Platform")
         {

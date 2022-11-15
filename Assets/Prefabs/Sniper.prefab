@@ -427,7 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkRadius: 10
   lookSpeed: 1000
-  fireRate: 0.5
+  fireRate: 0.35
   speed: 0.5
   sniperBullet: {fileID: 1686269879949221100, guid: f239abab0d84393499b7800f50ed2bde, type: 3}
   ejectionPoint: {fileID: 6502565617504956022}

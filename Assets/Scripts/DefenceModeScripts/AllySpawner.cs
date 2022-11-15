@@ -46,7 +46,7 @@ public class AllySpawner : MonoBehaviour
             blockerButton.image.color = Color.green;
         }
 
-        if (ChocoCoinsManager.coins < 15 || !canBeSpawned)
+        if (ChocoCoinsManager.coins < 20 || !canBeSpawned)
         {
             sniperButton.interactable = false;
             sniperButton.image.color = Color.gray;
@@ -57,7 +57,7 @@ public class AllySpawner : MonoBehaviour
             sniperButton.image.color = Color.green;
         }
 
-        if (ChocoCoinsManager.coins < 20 || !canBeSpawned)
+        if (ChocoCoinsManager.coins < 15 || !canBeSpawned)
         {
             healerButton.interactable = false;
             healerButton.image.color = Color.gray;
@@ -82,10 +82,10 @@ public class AllySpawner : MonoBehaviour
 
     public void SpawnSniper()
     {
-        if (spawnTimer <= 0 && ChocoCoinsManager.coins >= 15)
+        if (spawnTimer <= 0 && ChocoCoinsManager.coins >= 20)
         {
             Instantiate(sniper, new Vector2(-5,-3), Quaternion.identity);
-            ChocoCoinsManager.coins -= 15;
+            ChocoCoinsManager.coins -= 20;
             spawnTimer = 5f;
             canBeSpawned = false;
             beingRefilled = false;
@@ -94,10 +94,10 @@ public class AllySpawner : MonoBehaviour
 
     public void SpawnHealer()
     {
-        if (spawnTimer <= 0 && ChocoCoinsManager.coins >= 20)
+        if (spawnTimer <= 0 && ChocoCoinsManager.coins >= 15)
         {
             Instantiate(healer, new Vector2(-7.3f,-3), Quaternion.identity);
-            ChocoCoinsManager.coins -= 20;
+            ChocoCoinsManager.coins -= 15;
             spawnTimer = 5f;
             canBeSpawned = false;
             beingRefilled = false;
