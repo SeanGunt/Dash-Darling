@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HellBat : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class HellBat : MonoBehaviour
     }
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            speed = 4.0f;
+        }
         player = GameObject.FindWithTag("Player");
         platform = GameObject.FindWithTag("Platform");
         state = State.moving;

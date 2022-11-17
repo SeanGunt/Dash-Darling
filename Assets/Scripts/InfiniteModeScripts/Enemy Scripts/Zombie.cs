@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Zombie : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Zombie : MonoBehaviour
 
     void Awake()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            speed = 1.5f;
+        }
         state = State.moving;
         rb = this.GetComponent<Rigidbody2D>();
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
