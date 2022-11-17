@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HatZombie : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class HatZombie : MonoBehaviour
 
     void Awake()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            speed = 2.0f;
+        }
         rb = this.GetComponent<Rigidbody2D>();
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
         PlaySound(spawnSound);

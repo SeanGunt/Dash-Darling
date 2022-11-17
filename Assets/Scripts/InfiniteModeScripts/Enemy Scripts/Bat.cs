@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bat : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class Bat : MonoBehaviour
     }
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            speed = 3.0f;
+        }
         player = GameObject.FindWithTag("Player");
         platform = GameObject.FindWithTag("Platform");
         state = State.moving;
