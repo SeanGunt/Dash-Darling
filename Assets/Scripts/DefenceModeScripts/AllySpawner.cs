@@ -46,7 +46,7 @@ public class AllySpawner : MonoBehaviour
             blockerButton.image.color = Color.green;
         }
 
-        if (ChocoCoinsManager.coins < 20 || !canBeSpawned)
+        if (ChocoCoinsManager.coins < 1 || !canBeSpawned)
         {
             sniperButton.interactable = false;
             sniperButton.image.color = Color.gray;
@@ -82,10 +82,10 @@ public class AllySpawner : MonoBehaviour
 
     public void SpawnSniper()
     {
-        if (spawnTimer <= 0 && ChocoCoinsManager.coins >= 20)
+        if (spawnTimer <= 0 && ChocoCoinsManager.coins >= 1)
         {
             Instantiate(sniper, new Vector2(-5,-3), Quaternion.identity);
-            ChocoCoinsManager.coins -= 20;
+            ChocoCoinsManager.coins -= 1;
             spawnTimer = 5f;
             canBeSpawned = false;
             beingRefilled = false;
