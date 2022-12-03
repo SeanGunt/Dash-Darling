@@ -13,6 +13,7 @@ public class SlowAbility : MonoBehaviour
     [SerializeField] AudioClip audioClip;
     private bool hasBeenPlayed;
     private bool clicked;
+    private GameObject[] enemies;
     enum State
     {
         OnCooldown, ReadyToActivate, InProgress, NotPurchased
@@ -80,6 +81,12 @@ public class SlowAbility : MonoBehaviour
                 activeTimer -= Time.deltaTime;
                 abilityButton.enabled = false;
                 abilityButton.GetComponent<Image>().fillAmount -= 1f/startingActiveTimer * Time.deltaTime;
+                enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject enemy in enemies)
+                {
+                    Animator animator = enemy.GetComponent<Animator>();
+                    animator.SetFloat("speed", 0.5f);
+                }
                 if (activeTimer < 0)
                 {
                     Zombie.speed = 1.5f;
@@ -95,6 +102,12 @@ public class SlowAbility : MonoBehaviour
                 cooldownTimer -= Time.deltaTime;
                 abilityButton.enabled = false;
                 abilityButton.GetComponent<Image>().fillAmount += 1f/startingCooldownTimer * Time.deltaTime;
+                enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject enemy in enemies)
+                {
+                    Animator animator = enemy.GetComponent<Animator>();
+                    animator.SetFloat("speed", 1f);
+                }
                 if (cooldownTimer < 0)
                 {
                     activeTimer = startingActiveTimer;

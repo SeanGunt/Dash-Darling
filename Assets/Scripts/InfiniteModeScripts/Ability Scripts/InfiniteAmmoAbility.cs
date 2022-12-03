@@ -10,6 +10,7 @@ public class InfiniteAmmoAbility : MonoBehaviour
     [SerializeField] private Button abilityButton;
     private bool clicked;
     [SerializeField] private TextMeshProUGUI currentMagazineText;
+    [SerializeField] private Image reticleOutline;
     private GameObject pc;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip audioClip;
@@ -77,11 +78,13 @@ public class InfiniteAmmoAbility : MonoBehaviour
                 activeTimer -= Time.deltaTime;
                 abilityButton.enabled = false;
                 abilityButton.GetComponent<Image>().fillAmount -= 1f/startingActiveTimer * Time.deltaTime;
+                reticleOutline.fillAmount = 1f;
                 if (activeTimer < 0)
                 {
-                    state = State.OnCooldown;
                     pc.GetComponent<PlayerController>().currentPistolMagazine = GameDataHolder.pistolMagazine;
                     currentMagazineText.text = pc.GetComponent<PlayerController>().currentPistolMagazine.ToString();
+                    reticleOutline.fillAmount = 1f;
+                    state = State.OnCooldown;
                 }
             break;
 
