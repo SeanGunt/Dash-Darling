@@ -19,7 +19,7 @@ public class Bat : MonoBehaviour
     }
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             speed = 3.0f;
         }

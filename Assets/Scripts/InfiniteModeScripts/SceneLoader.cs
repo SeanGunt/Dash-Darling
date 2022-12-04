@@ -8,14 +8,14 @@ public class SceneLoader : MonoBehaviour
     public void StartGame()
     {
         DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         Debug.Log("GAME STARTED");
     }
 
     public void StartDefenceMode()
     {
         DataPersistenceManager.instance.SaveGame();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void LoadMenu()
@@ -23,7 +23,7 @@ public class SceneLoader : MonoBehaviour
         DataPersistenceManager.instance.SaveGame();
         DataPersistenceManager.instance.LoadGame();
         PlayerPrefs.Save();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void ExitGame()

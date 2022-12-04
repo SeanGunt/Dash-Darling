@@ -18,7 +18,7 @@ public class Zombie : MonoBehaviour
 
     void Awake()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             speed = 1.5f;
         }
