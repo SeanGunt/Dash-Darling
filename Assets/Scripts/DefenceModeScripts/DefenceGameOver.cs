@@ -28,11 +28,11 @@ public class DefenceGameOver : MonoBehaviour
 
     public void TryAgain()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void QuitToMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
